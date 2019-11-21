@@ -5,17 +5,27 @@
  */
 package Interface;
 
+import Dao.CandidatoDao;
+import Dao.InscricaoDao;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kevin
  */
 public class Inscricao extends javax.swing.JFrame {
-
+    private int cpf;
+    private final InscricaoDao inscricaodao = new InscricaoDao();
+    
     /**
      * Creates new form Inscricao
      */
     public Inscricao() {
         initComponents();
+        setLabels();
     }
 
     /**
@@ -28,11 +38,11 @@ public class Inscricao extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel_cpf = new javax.swing.JLabel();
+        jLabelCPF = new javax.swing.JLabel();
+        jLabel_nome = new javax.swing.JLabel();
         jLabel_NOME = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel_email = new javax.swing.JLabel();
         jLabel_EMAIL = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -40,15 +50,18 @@ public class Inscricao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("CPF:");
+        jLabel_cpf.setText("CPF:");
 
-        jLabel2.setText("CPF");
+        jLabel_nome.setText("NOME:");
 
-        jLabel3.setText("NOME:");
-
-        jLabel6.setText("EMAIL:");
+        jLabel_email.setText("EMAIL:");
 
         jButton1.setText("INSCREVER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,15 +70,15 @@ public class Inscricao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
-                .addGap(57, 57, 57)
+                    .addComponent(jLabel_cpf)
+                    .addComponent(jLabel_nome)
+                    .addComponent(jLabel_email))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(266, Short.MAX_VALUE))
+                    .addComponent(jLabelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(305, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -75,24 +88,34 @@ public class Inscricao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_cpf)
+                            .addComponent(jLabelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_nome))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel_email))
                     .addComponent(jLabel_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CandidatoDao candidato = new CandidatoDao();
+        if(inscricaodao.recebeUltimo()!=0){
+        candidato.atribuiCandidatoInscricao(inscricaodao.recebeUltimo(), cpf);
+        }else{
+           JOptionPane.showMessageDialog(null, "Erro","Atribuicao Errada",HEIGHT);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,15 +151,31 @@ public class Inscricao extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void recebeCpf(int c){
+        this.cpf = c;
+    }
+    
+    private void setLabels(){
+        CandidatoDao candidatodao = new CandidatoDao();
+        ResultSet rs = candidatodao.recuperaCandidato(cpf);        
+        try{
+        jLabelCPF.setText(rs.getNString(1));
+        jLabel_NOME.setText(rs.getNString(2));
+        jLabel_EMAIL.setText(rs.getNString(3));
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelCPF;
     private javax.swing.JLabel jLabel_EMAIL;
     private javax.swing.JLabel jLabel_NOME;
+    private javax.swing.JLabel jLabel_cpf;
+    private javax.swing.JLabel jLabel_email;
+    private javax.swing.JLabel jLabel_nome;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,10 +20,11 @@ public class InscricaoDao {
     private ResultSet rs;
     private Statement state;    
     
-    public boolean realizaInscricao(int codigo){
+    public boolean realizaInscricao(){
         try{
             pst = conexao.prepareStatement("insert into tbl_inscricao() values()");
               pst.execute();
+              pst.close();
               return true;
         }catch(SQLException e){
             System.out.println(e);
@@ -35,7 +36,9 @@ public class InscricaoDao {
             pst = conexao.prepareStatement("update tbl_inscricao set verifica_pagamento=? where codigo=?");
             pst.setString(0,String.valueOf(true));
             pst.setString(1, String.valueOf(inscricao.getCodigo()));
-            return pst.execute();
+            pst.executeUpdate();
+            pst.close();
+            return true;
         }catch(SQLException e){
             System.out.println(e);
             return false;
@@ -53,5 +56,15 @@ public class InscricaoDao {
             return null;
         }
     }
+     public int recebeUltimo(){
+        try{
+            pst = conexao.prepareStatement("select count(id_inscricao) from tbl_candidato");            
+            rs = pst.executeQuery();      
+          return rs.getInt(1);
+        }catch(SQLException e){
+            System.out.println(e);
+            return 0;
+        }
+    } 
     
 }
