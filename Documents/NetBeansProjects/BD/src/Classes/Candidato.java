@@ -10,7 +10,8 @@ package Classes;
  * @author Kevin
  */
 public class Candidato {
-    private int cpf,id_inscricao;
+    private int id_inscricao;
+    private long cpf;
     private String nome,email;
     private boolean verificaPagamento;
 
@@ -39,7 +40,7 @@ public class Candidato {
         this.email = email;
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 

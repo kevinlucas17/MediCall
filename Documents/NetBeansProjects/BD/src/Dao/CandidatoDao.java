@@ -61,8 +61,8 @@ public class CandidatoDao {
     public ResultSet recuperaCandidato(int cpf){
        try{
            
-           pst = conexao.prepareStatement("select * from tbl_candidato where cpf=?");
-           pst.setString(1, String.valueOf(cpf));
+           pst = conexao.prepareStatement("select * from tbl_candidato where id_inscricao=?");
+           pst.setString(1,String.valueOf(4));
            rs = pst.executeQuery();
            return rs;
        }catch(SQLException e){
@@ -75,8 +75,8 @@ public class CandidatoDao {
    public boolean atribuiCandidatoInscricao(int id, int cpf){
        try{
           pst = conexao.prepareStatement("update tbl_candidato set id_inscricao = ? where cpf = ?");
-          pst.setString(0,(String.valueOf(id)));
-          pst.setString(1, String.valueOf(cpf));
+          pst.setString(1,String.valueOf(id));
+          pst.setString(2,String.valueOf(cpf));
           return true;
        }catch(SQLException e){
            System.out.println(e+"atribuicandidato");
@@ -84,4 +84,6 @@ public class CandidatoDao {
        }      
        
    }
+   
+  
 }
