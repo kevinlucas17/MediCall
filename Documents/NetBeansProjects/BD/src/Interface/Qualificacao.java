@@ -6,8 +6,11 @@
 package Interface;
 
 import Classes.Candidato;
+import Classes.Prova;
 import Dao.CandidatoDao;
 import Dao.InscricaoDao;
+import Dao.ProvaDao;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,10 +18,11 @@ import Dao.InscricaoDao;
  */
 public class Qualificacao extends javax.swing.JFrame {
     private int cpf;
-    private int id;
     private final InscricaoDao inscricaodao = new InscricaoDao();
     private final CandidatoDao candidatodao = new CandidatoDao();
     private Candidato candidato = new Candidato();
+    private Prova provaQ = new Prova();
+    private ProvaDao provadao = new ProvaDao();
     /**
      * Creates new form Qualificacao
      */
@@ -150,8 +154,13 @@ public class Qualificacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSERIRActionPerformed
-        if(inscricaodao.verificaPagamento(id)){
-            
+        
+        //faltando associar a nota ao cpf do candidato atraves da tablea tbl_faz_prova
+        if(candidato.getVerificaPagamento()){
+            provaQ.setNotaQualificacao(Float.parseFloat(jTextFieldNOTAQUALI.getText()));
+            provadao.insereQuali(provaQ);
+        }else{
+            JOptionPane.showMessageDialog(null, "Candidato Caloteiro!!!");
         }
     }//GEN-LAST:event_jButtonINSERIRActionPerformed
 
