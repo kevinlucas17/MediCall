@@ -48,6 +48,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton3.setText("PROVAS");
 
         jButtonCADASTRAR.setText("CADASTRAR");
+        jButtonCADASTRAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCADASTRARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +97,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonCADASTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCADASTRARActionPerformed
+        CadastroCandidato cadastro = new CadastroCandidato();
+        cadastro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonCADASTRARActionPerformed
 
     /**
      * @param args the command line arguments
