@@ -19,7 +19,7 @@ public class Candidatos extends javax.swing.JFrame {
     
     public Candidatos() {
         initComponents();
-        //setTable();
+        setTable();
     }
 
     /**
@@ -64,7 +64,7 @@ public class Candidatos extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("DIGITE O CPF: ");
+        jLabel1.setText("DIGITE O CPF:");
 
         jTableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,9 +131,9 @@ public class Candidatos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldPESQUISACPF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonINSCREVER, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonPAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,22 +201,26 @@ public class Candidatos extends javax.swing.JFrame {
         });
     }
     
-   /* private String getLinhaTable(int j){
-        
+    private String getLinhaTable(int j){        
         try{
         int i =jTableTable.getSelectedRow();
         return jTableTable.getModel().getValueAt(i, j).toString();
         }catch(Exception e){
+            System.out.println(e + " getlinatable");
             return null;            
         }      
         
     }
     
     private void setTable(){
-        ResultSet rs = candidatos.recuperaCandidato((Integer.parseInt(jTextFieldPESQUISACPF.getText())));
+        try{
+        ResultSet rs = candidatos.recuperaCandidato(jTextFieldPESQUISACPF.getText());
         jTableTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            System.out.println(e+" setTable");
+        }
     }
-    */
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEXCLUIR;

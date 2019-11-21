@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class CandidatoDao {
    private final AcessoBanco acessoBanco= new AcessoBanco();
@@ -13,6 +14,7 @@ public class CandidatoDao {
    private Candidato candidato;
    private PreparedStatement pst;
    private ResultSet rs;
+   private Statement state;  
    
    public CandidatoDao(){
        candidato = new Candidato();
@@ -32,14 +34,15 @@ public class CandidatoDao {
        }         
      
    }    
-   public ResultSet recuperaCandidato(int cpf){
+   public ResultSet recuperaCandidato(String nome){
        try{
-           pst = conexao.prepareStatement("select * from tbl_candidato where cpf=?");
-           pst.setString(0, String.valueOf(cpf));
+           
+           pst = conexao.prepareStatement("select * from tbl_candidato where nome like ?");
+           pst.setString(1, nome+"%");
            rs = pst.executeQuery();
            return rs;
        }catch(SQLException e){
-           System.out.println(e);
+           System.out.println(e+" recuperacandidato cpf");
            return null;
        }              
        
@@ -50,7 +53,7 @@ public class CandidatoDao {
            rs = pst.executeQuery();
            return rs;
        }catch(SQLException e){
-           System.out.println(e);
+           System.out.println(e+" recuperacandidato");
            return null;
        }              
        
