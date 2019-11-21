@@ -107,7 +107,7 @@ public class CadastroCandidato extends javax.swing.JFrame {
         if("".equals(jTextField_CPF.getText())||"".equals(jTextField_NOME.getText())||"".equals(jTextField_EMAIL.getText())){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!!");
         }else{
-        Candidato candidato = new Candidato(Integer.parseInt(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText());
+        Candidato candidato = new Candidato(Long.parseLong(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText());
         CandidatoDao candidatodao = new CandidatoDao();        
             if(candidatodao.salvarCandidato(candidato)){
                 JOptionPane.showMessageDialog(null, "Cadastro Realizado");

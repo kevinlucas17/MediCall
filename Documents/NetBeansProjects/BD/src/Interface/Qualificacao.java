@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
  * @author Kevin
  */
 public class Qualificacao extends javax.swing.JFrame {
-    private int cpf;
     private final InscricaoDao inscricaodao = new InscricaoDao();
     private final CandidatoDao candidatodao = new CandidatoDao();
     private Candidato candidato = new Candidato();

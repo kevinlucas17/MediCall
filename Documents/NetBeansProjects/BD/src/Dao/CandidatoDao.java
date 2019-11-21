@@ -23,9 +23,9 @@ public class CandidatoDao {
        
        try{
        pst = conexao.prepareStatement("insert into tbl_candidato(cpf,nome,email) values(?,?,?)");
-       pst.setString(0,String.valueOf(candidato.getCpf()));
-       pst.setString(1,String.valueOf(candidato.getNome()));
-       pst.setString(2,candidato.getEmail());
+       pst.setString(1,String.valueOf(candidato.getCpf()));
+       pst.setString(2,String.valueOf(candidato.getNome()));
+       pst.setString(3,candidato.getEmail());
        pst.executeUpdate();
        return true;
        }catch(SQLException e){
