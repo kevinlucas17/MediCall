@@ -16,10 +16,10 @@ public class TblFazProvaDao {
     public boolean associaProva(Candidato candidato,Prova prova){
         return true;
     }
-    public int consultaCpf(int Cpf){
+    public int consultaCpf(long Cpf){
         return 1;
     }
-    public int coonsultaCpfId(int cpf, int id){
+    public int coonsultaCpfId(long cpf, int id){
         return 1;
     }
 }

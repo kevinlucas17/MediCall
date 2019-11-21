@@ -10,6 +10,7 @@ import Classes.Prova;
 import Dao.CandidatoDao;
 import Dao.InscricaoDao;
 import Dao.ProvaDao;
+import Dao.TblFazProvaDao;
 import javax.swing.JOptionPane;
 
 /**
@@ -129,9 +130,9 @@ public class Qualificacao extends javax.swing.JFrame {
                             .addComponent(jLabel_RECEBEINSCRICAOID, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_IDINSCRICAO))))
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSITUACAO)
-                    .addComponent(jLabelPAGO, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPAGO, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSITUACAO))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,10 +156,17 @@ public class Qualificacao extends javax.swing.JFrame {
 
     private void jButtonINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSERIRActionPerformed
         
-        //faltando associar a nota ao cpf do candidato atraves da tablea tbl_faz_prova
+        //faltando associar a nota ao cpf do candidato atraves da tabela tbl_faz_prova
         if(candidato.getVerificaPagamento()){
             provaQ.setNotaQualificacao(Float.parseFloat(jTextFieldNOTAQUALI.getText()));
             provadao.insereQuali(provaQ);
+            
+            TblFazProvaDao fazProva = new TblFazProvaDao();
+            if(fazProva.associaProva(candidato, provaQ)){
+                JOptionPane.showMessageDialog(null, "Prova Realizada!!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Erro Prova!!");
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Candidato Caloteiro!!!");
         }

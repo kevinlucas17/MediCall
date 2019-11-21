@@ -65,7 +65,7 @@ public class Candidatos extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("DIGITE O CPF:");
+        jLabel1.setText("DIGITE O NOME:");
 
         jTableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,7 +232,9 @@ public class Candidatos extends javax.swing.JFrame {
             return null;            
         }      
         
-    }
+    }   
+    
+    
     
     private void setTable(){
         try{

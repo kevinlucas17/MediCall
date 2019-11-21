@@ -58,7 +58,7 @@ public class CandidatoDao {
        }              
        
    }
-    public ResultSet recuperaCandidato(int cpf){
+    public ResultSet recuperaCandidato(long cpf){
        try{
            
            pst = conexao.prepareStatement("select * from tbl_candidato where id_inscricao=?");
@@ -72,7 +72,7 @@ public class CandidatoDao {
        
    }
     
-   public boolean atribuiCandidatoInscricao(int id, int cpf){
+   public boolean atribuiCandidatoInscricao(int id, long cpf){
        try{
           pst = conexao.prepareStatement("update tbl_candidato set id_inscricao = ? where cpf = ?");
           pst.setString(1,String.valueOf(id));

@@ -24,6 +24,7 @@ public class Discursiva extends javax.swing.JFrame {
      */
     public Discursiva() {
         initComponents();
+        setLables();
     }
 
     /**

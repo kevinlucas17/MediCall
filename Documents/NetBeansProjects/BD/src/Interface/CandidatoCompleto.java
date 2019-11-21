@@ -10,7 +10,7 @@ package Interface;
  * @author Kevin
  */
 public class CandidatoCompleto extends javax.swing.JFrame {
-
+    private long cpf;
     /**
      * Creates new form CandidatoCompleto
      */
@@ -222,6 +222,10 @@ public class CandidatoCompleto extends javax.swing.JFrame {
                 new CandidatoCompleto().setVisible(true);
             }
         });
+    }
+    
+    public void recebeCpf(long cp){
+        this.cpf = cp;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

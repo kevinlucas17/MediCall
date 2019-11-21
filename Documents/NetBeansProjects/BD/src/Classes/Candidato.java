@@ -18,7 +18,7 @@ public class Candidato {
     public Candidato(){
         
     }
-    public Candidato(int cpf, String nome, String email) {
+    public Candidato(long cpf, String nome, String email) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -44,7 +44,7 @@ public class Candidato {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 
