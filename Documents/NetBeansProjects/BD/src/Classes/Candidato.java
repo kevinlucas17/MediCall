@@ -10,8 +10,9 @@ package Classes;
  * @author Kevin
  */
 public class Candidato {
-    private int cpf;
+    private int cpf,id_inscricao;
     private String nome,email;
+    private boolean verificaPagamento;
 
     public Candidato(){
         
@@ -44,6 +45,22 @@ public class Candidato {
 
     public void setCpf(int cpf) {
         this.cpf = cpf;
+    }
+
+    public int getId_inscricao() {
+        return id_inscricao;
+    }
+
+    public void setId_inscricao(int id_inscricao) {
+        this.id_inscricao = id_inscricao;
+    }
+
+    public boolean getVerificaPagamento() {
+        return verificaPagamento;
+    }
+
+    public void setVerificaPagamento(boolean verificaPagamento) {
+        this.verificaPagamento = verificaPagamento;
     }
     
 }

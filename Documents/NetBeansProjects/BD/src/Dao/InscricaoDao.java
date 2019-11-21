@@ -66,5 +66,7 @@ public class InscricaoDao {
             return 0;
         }
     } 
-    
+    public boolean verificaPagamento(int c){
+        return true;
+    }
 }
