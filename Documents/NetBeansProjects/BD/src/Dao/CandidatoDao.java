@@ -49,7 +49,7 @@ public class CandidatoDao {
    }
     public ResultSet recuperaCandidato(){
        try{
-           pst = conexao.prepareStatement("select * from tbl_candidato");
+           pst = conexao.prepareStatement("select * from tbl_candidato order by id_inscricao");
            rs = pst.executeQuery();
            return rs;
        }catch(SQLException e){
@@ -58,6 +58,7 @@ public class CandidatoDao {
        }              
        
    }
+    
    public boolean atribuiCandidatoInscricao(int id, int cpf){
        try{
           pst = conexao.prepareStatement("update tbl_candidato set id_inscricao = ? where cpf = ?");
@@ -67,8 +68,7 @@ public class CandidatoDao {
        }catch(SQLException e){
            System.out.println(e);
            return false;
-       }
-      
+       }      
        
    }
 }
