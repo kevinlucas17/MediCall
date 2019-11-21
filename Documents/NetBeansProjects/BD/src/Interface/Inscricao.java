@@ -160,11 +160,11 @@ public class Inscricao extends javax.swing.JFrame {
         CandidatoDao candidatodao = new CandidatoDao();
         ResultSet rs = candidatodao.recuperaCandidato(cpf);        
         try{
-        jLabelCPF.setText(rs.getNString(1));
-        jLabel_NOME.setText(rs.getNString(2));
-        jLabel_EMAIL.setText(rs.getNString(3));
+        jLabelCPF.setText(rs.getString(1));
+        jLabel_NOME.setText(rs.getString(2));
+        jLabel_EMAIL.setText(rs.getString(3));
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+" setlablesinscricao");
         }
     }
 

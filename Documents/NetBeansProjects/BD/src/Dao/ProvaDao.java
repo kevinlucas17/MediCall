@@ -42,7 +42,7 @@ public class ProvaDao {
             pst.close();
             return true;
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+" inserequali");
             return false;
         }     
     }
@@ -55,7 +55,7 @@ public class ProvaDao {
             return rs;
             
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+" recuperaprova");
             return null;
         }
     }    
@@ -68,7 +68,7 @@ public class ProvaDao {
             return rs;
             
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+" recuperaprova");
             return null;
         }
     }
@@ -82,7 +82,7 @@ public class ProvaDao {
             pst.close();
             return true;
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+"inseredisc");
             return false;
         }     
     }

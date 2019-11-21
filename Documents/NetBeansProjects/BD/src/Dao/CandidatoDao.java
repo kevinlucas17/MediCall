@@ -29,7 +29,7 @@ public class CandidatoDao {
        pst.executeUpdate();
        return true;
        }catch(SQLException e){
-           System.out.println(e);
+           System.out.println(e+" salvarcandidato");
            return false;     
        }         
      
@@ -58,6 +58,19 @@ public class CandidatoDao {
        }              
        
    }
+    public ResultSet recuperaCandidato(int cpf){
+       try{
+           
+           pst = conexao.prepareStatement("select * from tbl_candidato where cpf=?");
+           pst.setString(1, String.valueOf(cpf));
+           rs = pst.executeQuery();
+           return rs;
+       }catch(SQLException e){
+           System.out.println(e+" recuperacandidato cpf");
+           return null;
+       }              
+       
+   }
     
    public boolean atribuiCandidatoInscricao(int id, int cpf){
        try{
@@ -66,7 +79,7 @@ public class CandidatoDao {
           pst.setString(1, String.valueOf(cpf));
           return true;
        }catch(SQLException e){
-           System.out.println(e);
+           System.out.println(e+"atribuicandidato");
            return false;
        }      
        

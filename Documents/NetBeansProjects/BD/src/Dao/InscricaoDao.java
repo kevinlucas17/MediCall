@@ -27,7 +27,7 @@ public class InscricaoDao {
               pst.close();
               return true;
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+" realizaoinscricao");
             return false;
         }
     }    
@@ -40,7 +40,7 @@ public class InscricaoDao {
             pst.close();
             return true;
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+"pagar");
             return false;
         }
     }
@@ -52,7 +52,7 @@ public class InscricaoDao {
             rs = pst.executeQuery();
             return rs;
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+" recuperainscricao");
             return null;
         }
     }
@@ -62,7 +62,7 @@ public class InscricaoDao {
             rs = pst.executeQuery();      
           return rs.getInt(1);
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println(e+" recebeultimo");
             return 0;
         }
     } 
