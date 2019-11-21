@@ -5,12 +5,20 @@
  */
 package Interface;
 
+import Classes.Candidato;
+import Classes.Prova;
+import Dao.ProvaDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kevin
  */
 public class Discursiva extends javax.swing.JFrame {
-
+    private Candidato candidato = new Candidato();
+    private ProvaDao provadao = new ProvaDao();
+    private Prova prova = new Prova();
+    
     /**
      * Creates new form Discursiva
      */
@@ -51,6 +59,11 @@ public class Discursiva extends javax.swing.JFrame {
         jLabel5.setText("EMAIL:");
 
         jButton_INSERIR.setText("INSERIR");
+        jButton_INSERIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_INSERIRActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("NOTA DISCURSIVA");
 
@@ -133,6 +146,16 @@ public class Discursiva extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_INSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERIRActionPerformed
+        if(prova.getNotaQualificacao() < 7.0){
+            JOptionPane.showMessageDialog(null, "Candidato não Apto!");
+        }else{
+            Prova provaD = new Prova();
+            provaD.setNotaDiscursiva(Float.parseFloat(jTextField_INSERIRDISCURSIVA.getText()));
+            provadao.insereDisc(provaD);            
+        }
+    }//GEN-LAST:event_jButton_INSERIRActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -166,6 +189,20 @@ public class Discursiva extends javax.swing.JFrame {
                 new Discursiva().setVisible(true);
             }
         });
+    }
+    public void recebeCandidato(Candidato candidatos){
+        this.candidato = candidatos;
+    }
+    public void recebeProvaQuali(Prova provaQ){
+        this.prova = provaQ;
+    }
+    private void setLables(){
+        jLabel_NOME.setText(candidato.getNome());
+        jLabel_EMAIL.setText(candidato.getEmail());
+        jLabel_CPF.setText(String.valueOf(candidato.getCpf()));
+        jLabel_idInscricao.setText(String.valueOf(candidato.getId_inscricao()));
+        jLabel_RECEBENOTAQUALIFICACAO.setText(String.valueOf(prova.getNotaDiscursiva()));
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

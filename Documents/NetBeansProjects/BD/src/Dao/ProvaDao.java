@@ -32,7 +32,7 @@ public class ProvaDao {
         prova = new Prova();
     }
     
-    public boolean insereProva(Prova prova){
+    public boolean insereQuali(Prova prova){
        
         try{
             pst = conexao.prepareStatement("insert into tbl_prova(nota_qualificacao,nota_discursiva)values(?,?)");
@@ -72,5 +72,18 @@ public class ProvaDao {
             return null;
         }
     }
-
+    public boolean insereDisc(Prova prova){
+       
+        try{
+            pst = conexao.prepareStatement("insert into tbl_prova(nota_qualificacao,nota_discursiva)values(?,?)");
+            pst.setString(1,String.valueOf(prova.getNotaQualificacao()));
+            pst.setString(1,String.valueOf(prova.getNotaDiscursiva()));
+            pst.executeUpdate();
+            pst.close();
+            return true;
+        }catch(SQLException e){
+            System.out.println(e);
+            return false;
+        }     
+    }
 }

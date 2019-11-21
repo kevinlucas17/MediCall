@@ -189,7 +189,7 @@ public class Qualificacao extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void recebeCandidato(Candidato candidatos){
         this.candidato = candidatos;
     }
@@ -197,8 +197,8 @@ public class Qualificacao extends javax.swing.JFrame {
         jLabelNOME.setText(candidato.getNome());
         jLabelCPF.setText(String.valueOf(candidato.getCpf()));
         jLabelEMAIL.setText(candidato.getEmail());
-        jLabel_RECEBEINSCRICAOID.setText((candidato.getId_inscricao()));
-        jLabelPAGO.setText((candidato.getVerificaPagamento()));
+        jLabel_RECEBEINSCRICAOID.setText(String.valueOf(candidato.getId_inscricao()));
+        jLabelPAGO.setText(String.valueOf(candidato.getVerificaPagamento()));
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
