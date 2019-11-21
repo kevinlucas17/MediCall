@@ -10,12 +10,13 @@ package Interface;
  * @author Kevin
  */
 public class Qualificacao extends javax.swing.JFrame {
-
+    private int cpf;
     /**
      * Creates new form Qualificacao
      */
     public Qualificacao() {
         initComponents();
+        setLabels();
     }
 
     /**
@@ -34,12 +35,15 @@ public class Qualificacao extends javax.swing.JFrame {
         jLabel_EMAIL = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNOTAQUALI = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel_IDINSCRICAO = new javax.swing.JLabel();
         jLabel_RECEBEINSCRICAOID = new javax.swing.JLabel();
+        jLabelSITUACAO = new javax.swing.JLabel();
+        jLabelPAGO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel_CPF.setText("CPF:");
 
@@ -53,14 +57,16 @@ public class Qualificacao extends javax.swing.JFrame {
 
         jLabel_IDINSCRICAO.setText("ID INSCRIÇÃO");
 
+        jLabelSITUACAO.setText("SITUAÇÃO");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_CPF)
                             .addComponent(jLabel_EMAIL)
@@ -72,14 +78,19 @@ public class Qualificacao extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(174, 174, 174)
-                                .addComponent(jLabel_IDINSCRICAO)
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel_RECEBEINSCRICAOID, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabelSITUACAO)
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jLabelPAGO, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel_IDINSCRICAO)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jLabel_RECEBEINSCRICAOID, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
                         .addComponent(jLabel7)
-                        .addGap(35, 35, 35)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(25, 25, 25)
+                        .addComponent(jTextFieldNOTAQUALI, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(76, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -100,7 +111,11 @@ public class Qualificacao extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel_RECEBEINSCRICAOID, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_IDINSCRICAO))))
-                .addGap(28, 28, 28)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSITUACAO)
+                    .addComponent(jLabelPAGO, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_CPF))
@@ -110,7 +125,7 @@ public class Qualificacao extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNOTAQUALI, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,6 +133,7 @@ public class Qualificacao extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -155,17 +171,26 @@ public class Qualificacao extends javax.swing.JFrame {
         });
     }
 
+    public void recebeCpf(int c){
+        this.cpf = c;
+    }
+    private void setLabels(){
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelPAGO;
+    private javax.swing.JLabel jLabelSITUACAO;
     private javax.swing.JLabel jLabel_CPF;
     private javax.swing.JLabel jLabel_EMAIL;
     private javax.swing.JLabel jLabel_IDINSCRICAO;
     private javax.swing.JLabel jLabel_NOME;
     private javax.swing.JLabel jLabel_RECEBEINSCRICAOID;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldNOTAQUALI;
     // End of variables declaration//GEN-END:variables
 }
