@@ -8,6 +8,7 @@ package Interface;
 
 import Dao.CandidatoDao;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 /**
  *
@@ -179,7 +180,12 @@ public class Candidatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPAGARActionPerformed
 
     private void jButtonEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEXCLUIRActionPerformed
-       
+       if(candidatos.removeCandidato(getLinhaTable(0))){
+           JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
+           setTable();
+       }else{
+           JOptionPane.showMessageDialog(null, "Erro ao excluir!!");
+       }
     }//GEN-LAST:event_jButtonEXCLUIRActionPerformed
 
     private void jButtonVOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVOLTARActionPerformed
@@ -232,9 +238,7 @@ public class Candidatos extends javax.swing.JFrame {
             return null;            
         }      
         
-    }   
-    
-    
+    }           
     
     private void setTable(){
         try{

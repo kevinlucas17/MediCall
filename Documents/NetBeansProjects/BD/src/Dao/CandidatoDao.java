@@ -19,6 +19,7 @@ public class CandidatoDao {
    public CandidatoDao(){
        candidato = new Candidato();
    }
+   
    public boolean salvarCandidato(Candidato candidato){
        
        try{
@@ -34,6 +35,7 @@ public class CandidatoDao {
        }         
      
    }    
+   
    public ResultSet recuperaCandidato(String nome){
        try{
            
@@ -47,6 +49,7 @@ public class CandidatoDao {
        }              
        
    }
+   
     public ResultSet recuperaCandidato(){
        try{
            pst = conexao.prepareStatement("select * from tbl_candidato order by id_inscricao");
@@ -58,6 +61,7 @@ public class CandidatoDao {
        }              
        
    }
+    
     public ResultSet recuperaCandidato(long cpf){
        try{
            
@@ -84,8 +88,19 @@ public class CandidatoDao {
        }      
        
    }
-   public boolean removeCandidato(Candidato candidato){
+   
+   public boolean removeCandidato(String cpf){
+       try{
+       pst = conexao.prepareStatement("delete from tbl_candidato where cpf =?");
+       pst.setString(1, cpf);
+       pst.executeUpdate();
+       pst.close();
        return true;
+       }catch(SQLException e){
+           System.out.println(e+" remover candidato");
+           return false;
+       }       
+       
    }
   
 }
