@@ -19,15 +19,33 @@ import javax.swing.JOptionPane;
 public class Inscricao extends javax.swing.JFrame {
     private String cpf;
     private final InscricaoDao inscricaodao = new InscricaoDao();
+    private CandidatoDao candidatodao = new CandidatoDao();
     
     /**
      * Creates new form Inscricao
      */
     public Inscricao() {
         initComponents();
+        
+    }
+     public void recebeCpf(String c){
+        this.cpf = c;
         setLabels();
     }
-
+     
+    private void setLabels(){                  
+        System.out.println(cpf);
+        try{   
+        ResultSet rs = candidatodao.recuperaCandidatoCpf(cpf);         
+        while(rs.next()){
+            jLabelCPF.setText(rs.getString(1));
+            jLabel_NOME.setText(rs.getString(2));
+            jLabel_EMAIL.setText(rs.getString(3));
+        }
+        }catch(SQLException e){
+            System.out.println(e+" setlables inscricao");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +68,7 @@ public class Inscricao extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel_cpf.setText("CPF:");
 
@@ -82,48 +101,51 @@ public class Inscricao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_cpf)
-                            .addComponent(jLabel_nome)
-                            .addComponent(jLabel_email))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButtonVOLTAR)))
-                .addContainerGap(296, Short.MAX_VALUE))
+                        .addComponent(jButtonVOLTAR))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel_email)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel_cpf)
+                                    .addGap(82, 82, 82)
+                                    .addComponent(jLabelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel_nome)
+                                    .addGap(72, 72, 72)
+                                    .addComponent(jLabel_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonVOLTAR)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel_cpf)
-                    .addComponent(jLabelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_nome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel_NOME, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_email, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_cpf, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelCPF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_NOME, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_nome, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel_email))
                     .addComponent(jLabel_EMAIL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addGap(64, 64, 64)
                 .addComponent(jButtonINSCREVER, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonINSCREVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSCREVERActionPerformed
@@ -136,8 +158,8 @@ public class Inscricao extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonINSCREVERActionPerformed
 
     private void jButtonVOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVOLTARActionPerformed
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
+        Candidatos candidatos = new Candidatos();
+        candidatos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVOLTARActionPerformed
 
@@ -174,23 +196,8 @@ public class Inscricao extends javax.swing.JFrame {
                 new Inscricao().setVisible(true);
             }
         });
-    }
-    
-    public void recebeCpf(String c){
-        this.cpf = c;
-    }
-    
-    private void setLabels(){
-        CandidatoDao candidatodao = new CandidatoDao();
-        ResultSet rs = candidatodao.recuperaCandidatoCpf(cpf);        
-        try{
-        jLabelCPF.setText(rs.getString(1));
-        jLabel_NOME.setText(rs.getString(2));
-        jLabel_EMAIL.setText(rs.getString(3));
-        }catch(SQLException e){
-            System.out.println(e+" setlables inscricao");
-        }
-    }
+    }       
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonINSCREVER;
