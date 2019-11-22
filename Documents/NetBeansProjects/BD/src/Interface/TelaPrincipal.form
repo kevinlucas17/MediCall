@@ -27,12 +27,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton3" max="32767" attributes="0"/>
+                  <Component id="jButtonPROVAS" max="32767" attributes="0"/>
                   <Component id="jButton1" pref="156" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton2" pref="176" max="32767" attributes="0"/>
+                  <Component id="jButtonINSCRICOES" pref="176" max="32767" attributes="0"/>
                   <Component id="jButtonCADASTRAR" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="172" max="32767" attributes="0"/>
@@ -45,11 +45,11 @@
               <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="jButtonINSCRICOES" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton3" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Component id="jButtonPROVAS" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jButtonCADASTRAR" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="156" max="32767" attributes="0"/>
@@ -66,15 +66,21 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jButtonINSCRICOES">
       <Properties>
         <Property name="text" type="java.lang.String" value="INSCRIC&#xd5;ES"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonINSCRICOESActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jButtonPROVAS">
       <Properties>
         <Property name="text" type="java.lang.String" value="PROVAS"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPROVASActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCADASTRAR">
       <Properties>

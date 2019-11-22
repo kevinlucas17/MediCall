@@ -84,6 +84,8 @@ public class CandidatoDao {
        }      
        
    }
-   
+   public boolean removeCandidato(Candidato candidato){
+       return true;
+   }
   
 }

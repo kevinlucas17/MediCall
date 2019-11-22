@@ -86,7 +86,7 @@ public class CadastroCandidato extends javax.swing.JFrame {
                             .addComponent(jTextField_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
                         .addComponent(jButtonVOLTAR)))
                 .addContainerGap(214, Short.MAX_VALUE))
         );
