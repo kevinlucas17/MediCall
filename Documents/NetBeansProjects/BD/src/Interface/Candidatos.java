@@ -165,7 +165,7 @@ public class Candidatos extends javax.swing.JFrame {
     private void jButtonINSCREVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSCREVERActionPerformed
         // TODO add your handling code here:        
         Inscricao inscricao = new Inscricao();
-        inscricao.recebeCpf(Integer.parseInt(getLinhaTable(0)));
+        inscricao.recebeCpf(getLinhaTable(0));
         inscricao.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonINSCREVERActionPerformed

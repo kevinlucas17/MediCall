@@ -37,18 +37,18 @@ public class CandidatoDao {
    }    
    
    public ResultSet recuperaCandidato(String nome){
-       try{
-           
+       try{           
            pst = conexao.prepareStatement("select * from tbl_candidato where nome like ?");
            pst.setString(1, nome+"%");
            rs = pst.executeQuery();
            return rs;
        }catch(SQLException e){
-           System.out.println(e+" recuperacandidato cpf");
+           System.out.println(e+" recuperacandidato");
            return null;
        }              
        
-   }
+   } 
+    
    
     public ResultSet recuperaCandidato(){
        try{
@@ -60,17 +60,28 @@ public class CandidatoDao {
            return null;
        }              
        
-   }
-    
-    public ResultSet recuperaCandidato(long cpf){
-       try{
-           
+   }    
+    public ResultSet recuperaCandidatoId(String id){
+       try{           
            pst = conexao.prepareStatement("select * from tbl_candidato where id_inscricao=?");
-           pst.setString(1,String.valueOf(4));
+           pst.setString(1,id);
            rs = pst.executeQuery();
            return rs;
        }catch(SQLException e){
            System.out.println(e+" recuperacandidato cpf");
+           return null;
+       }              
+       
+   }
+    
+    public ResultSet recuperaCandidatoCpf(String cpf){
+       try{           
+           pst = conexao.prepareStatement("select * from tbl_candidato where cpf = ?");
+           pst.setString(1, cpf);
+           rs = pst.executeQuery();
+           return rs;
+       }catch(SQLException e){
+           System.out.println(e+" recuperacandidato");
            return null;
        }              
        
