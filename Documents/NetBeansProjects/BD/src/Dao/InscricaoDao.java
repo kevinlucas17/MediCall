@@ -56,14 +56,14 @@ public class InscricaoDao {
             return null;
         }
     }
-     public int recebeUltimo(){
+     public String recebeUltimo(){
         try{
             pst = conexao.prepareStatement("select count(id_inscricao) from tbl_candidato");            
             rs = pst.executeQuery();      
-          return rs.getInt(1);
+          return rs.getString(1);
         }catch(SQLException e){
             System.out.println(e+" recebeultimo");
-            return 0;
+            return null;
         }
     } 
     public boolean verificaPagamento(int c){

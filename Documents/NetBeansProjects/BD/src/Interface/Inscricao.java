@@ -34,7 +34,6 @@ public class Inscricao extends javax.swing.JFrame {
     }
      
     private void setLabels(){                  
-        System.out.println(cpf);
         try{   
         ResultSet rs = candidatodao.recuperaCandidatoCpf(cpf);         
         while(rs.next()){
@@ -149,12 +148,8 @@ public class Inscricao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonINSCREVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSCREVERActionPerformed
-        CandidatoDao candidato = new CandidatoDao();
-        if(inscricaodao.recebeUltimo()!=0){
-        candidato.atribuiCandidatoInscricao(inscricaodao.recebeUltimo(), Long.parseLong(cpf));
-        }else{
-           JOptionPane.showMessageDialog(null, "Erro","Atribuicao Errada",HEIGHT);
-        }
+        System.out.println(inscricaodao.recebeUltimo());
+        candidatodao.atribuiCandidatoInscricao(inscricaodao.recebeUltimo(), cpf);
     }//GEN-LAST:event_jButtonINSCREVERActionPerformed
 
     private void jButtonVOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVOLTARActionPerformed

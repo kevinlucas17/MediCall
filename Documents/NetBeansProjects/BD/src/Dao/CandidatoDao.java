@@ -87,11 +87,11 @@ public class CandidatoDao {
        
    }
     
-   public boolean atribuiCandidatoInscricao(int id, long cpf){
+   public boolean atribuiCandidatoInscricao(String id, String cpf){
        try{
           pst = conexao.prepareStatement("update tbl_candidato set id_inscricao = ? where cpf = ?");
-          pst.setString(1,String.valueOf(id));
-          pst.setString(2,String.valueOf(cpf));
+          pst.setString(1,id);
+          pst.setString(2,cpf);
           pst.executeUpdate();
           return true;
        }catch(SQLException e){
