@@ -148,8 +148,23 @@ public class Inscricao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonINSCREVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSCREVERActionPerformed
-        System.out.println(inscricaodao.recebeUltimo());
-        candidatodao.atribuiCandidatoInscricao(inscricaodao.recebeUltimo(), cpf);
+        if(inscricaodao.realizaInscricao()){
+            String count = null;
+            try{
+                ResultSet rs = inscricaodao.recebeUltimo();
+                while(rs.next()){
+                count = rs.getString(1);
+                }
+            }catch(SQLException e){
+                System.out.println(e+" Inscrever button");
+            }
+        
+        candidatodao.atribuiCandidatoInscricao(count, cpf);
+        System.out.println(count +" count");
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro na inscricao!!");
+        }
+        
     }//GEN-LAST:event_jButtonINSCREVERActionPerformed
 
     private void jButtonVOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVOLTARActionPerformed

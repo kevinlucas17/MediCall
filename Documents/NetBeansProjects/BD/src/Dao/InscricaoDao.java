@@ -56,11 +56,11 @@ public class InscricaoDao {
             return null;
         }
     }
-     public String recebeUltimo(){
+     public ResultSet recebeUltimo(){
         try{
-            pst = conexao.prepareStatement("select count(id_inscricao) from tbl_candidato");            
+            pst = conexao.prepareStatement("select count(id_inscricao) from tbl_inscricao");            
             rs = pst.executeQuery();      
-          return rs.getString(1);
+          return rs;
         }catch(SQLException e){
             System.out.println(e+" recebeultimo");
             return null;
