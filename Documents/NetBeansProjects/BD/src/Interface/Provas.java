@@ -5,17 +5,24 @@
  */
 package Interface;
 
+import Dao.InscricaoDao;
+import Dao.ProvaDao;
+import java.sql.ResultSet;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Kevin
  */
 public class Provas extends javax.swing.JFrame {
-
+   
+    private ProvaDao provas  = new ProvaDao();
     /**
      * Creates new form Provas
      */
     public Provas() {
         initComponents();
+        setTable();
     }
 
     /**
@@ -28,14 +35,14 @@ public class Provas extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButtonVOLTAR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -46,7 +53,7 @@ public class Provas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableTable);
 
         jButton1.setText("jButton1");
 
@@ -94,7 +101,28 @@ public class Provas extends javax.swing.JFrame {
         telaPrincipal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVOLTARActionPerformed
-
+    
+    private String getLinhaTable(int j){        
+        try{
+        int i =jTableTable.getSelectedRow();
+        return jTableTable.getModel().getValueAt(i, j).toString();
+        }catch(Exception e){
+            System.out.println(e + " getlinatable");
+            return null;            
+        }      
+        
+    }           
+    
+    private void setTable(){
+        try{
+        ResultSet rs = provas.recuperaProva();
+        jTableTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            System.out.println(e+" setTable");
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -134,6 +162,6 @@ public class Provas extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonVOLTAR;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableTable;
     // End of variables declaration//GEN-END:variables
 }

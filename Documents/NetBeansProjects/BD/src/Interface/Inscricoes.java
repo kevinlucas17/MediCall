@@ -5,17 +5,22 @@
  */
 package Interface;
 
+import Dao.InscricaoDao;
+import java.sql.ResultSet;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Kevin
  */
 public class Inscricoes extends javax.swing.JFrame {
-
+    InscricaoDao inscricao = new InscricaoDao();
     /**
      * Creates new form Inscricoes
      */
     public Inscricoes() {
         initComponents();
+        setTable();
     }
 
     /**
@@ -28,6 +33,8 @@ public class Inscricoes extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonVOLTAR = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -39,21 +46,41 @@ public class Inscricoes extends javax.swing.JFrame {
             }
         });
 
+        jTableTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonVOLTAR)
-                .addContainerGap(490, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonVOLTAR))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonVOLTAR)
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addGap(72, 72, 72)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
@@ -65,7 +92,27 @@ public class Inscricoes extends javax.swing.JFrame {
         telaPrincipal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVOLTARActionPerformed
-
+    
+      private String getLinhaTable(int j){        
+        try{
+        int i =jTableTable.getSelectedRow();
+        return jTableTable.getModel().getValueAt(i, j).toString();
+        }catch(Exception e){
+            System.out.println(e + " getlinatable");
+            return null;            
+        }      
+        
+    }           
+    
+    private void setTable(){
+        try{
+        ResultSet rs = inscricao.recuperaInscricao();
+        jTableTable.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            System.out.println(e+" setTable");
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -103,5 +150,7 @@ public class Inscricoes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonVOLTAR;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableTable;
     // End of variables declaration//GEN-END:variables
 }
