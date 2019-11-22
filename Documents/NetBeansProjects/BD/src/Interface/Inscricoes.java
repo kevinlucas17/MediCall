@@ -20,6 +20,7 @@ public class Inscricoes extends javax.swing.JFrame {
      */
     public Inscricoes() {
         initComponents();
+        this.setTitle("Inscrições");
         setTable();
     }
 

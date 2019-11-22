@@ -22,7 +22,6 @@ public class Candidatos extends javax.swing.JFrame {
         initComponents();
         setTable();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,6 +95,11 @@ public class Candidatos extends javax.swing.JFrame {
         });
 
         jButtonMODIFICAR.setText("MODIFICAR");
+        jButtonMODIFICAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMODIFICARActionPerformed(evt);
+            }
+        });
 
         jButtonEXCLUIR.setText("EXCLUIR");
         jButtonEXCLUIR.addActionListener(new java.awt.event.ActionListener() {
@@ -193,6 +197,14 @@ public class Candidatos extends javax.swing.JFrame {
         telaPrincipal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVOLTARActionPerformed
+
+    private void jButtonMODIFICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMODIFICARActionPerformed
+        Modificar modificar = new Modificar();
+        modificar.recebeCpf(getLinhaTable(0));        
+        modificar.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButtonMODIFICARActionPerformed
 
     /**
      * @param args the command line arguments

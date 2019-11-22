@@ -22,6 +22,7 @@ public class Provas extends javax.swing.JFrame {
      */
     public Provas() {
         initComponents();
+        this.setTitle("Provas");
         setTable();
     }
 
