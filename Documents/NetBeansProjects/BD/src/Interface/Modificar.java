@@ -5,9 +5,11 @@
  */
 package Interface;
 
+import Classes.Candidato;
 import Dao.CandidatoDao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -72,6 +74,11 @@ public class Modificar extends javax.swing.JFrame {
         jLabelEMAIL.setText("Email");
 
         jButtonATUALIZAR.setText("ATUALIZAR");
+        jButtonATUALIZAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonATUALIZARActionPerformed(evt);
+            }
+        });
 
         jButtonVOLTAR.setText("VOLTAR");
         jButtonVOLTAR.addActionListener(new java.awt.event.ActionListener() {
@@ -145,10 +152,25 @@ public class Modificar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonVOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVOLTARActionPerformed
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
+        Candidatos candidato = new Candidatos();
+        candidato.setVisible(true);        
         this.dispose();
     }//GEN-LAST:event_jButtonVOLTARActionPerformed
+
+    private void jButtonATUALIZARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonATUALIZARActionPerformed
+        if("".equals(jTextField_CPF.getText()) ||  "".equals(jTextField_NOME.getText()) || "".equals(jTextField_EMAIL.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha todos campos!!");
+        }else{
+                
+                if(candidatodao.atualizaCandidato(new Candidato(Long.parseLong(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText(),cpf))){
+                    JOptionPane.showMessageDialog(null, "Atualizado");
+                    setCampos();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Não Atualizado!");
+                }
+        }        
+        
+    }//GEN-LAST:event_jButtonATUALIZARActionPerformed
 
     /**
      * @param args the command line arguments

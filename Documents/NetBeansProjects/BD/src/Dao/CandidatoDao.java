@@ -114,5 +114,41 @@ public class CandidatoDao {
        }       
        
    }
+   public boolean atualizaCandidato(Candidato candidato){
+       try{
+           pst = conexao.prepareStatement("update tbl_candidato set cpf =?, nome = ?, email =? where cpf =?");
+           pst.setString(1, String.valueOf(candidato.getCpf()));
+           pst.setString(2, candidato.getNome());
+           pst.setString(3,candidato.getEmail());
+           pst.setString(4, candidato.getCpf_salvo());
+           pst.executeUpdate();
+           pst.close();
+           return true;
+       }catch(SQLException e){
+           System.out.println(e+" atualiza candidato");
+           return false;
+       }
+       
+   }
+   
+   public boolean verificaInscricao(String cpf){
+       try{
+        pst = conexao.prepareStatement("select id_inscricao from tbl_candidato where cpf=?");
+        pst.setString(1,cpf);
+        rs = pst.executeQuery();
+        while(rs.next()){
+            if(rs.getString(1) == null){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+       }catch(SQLException e){
+           System.out.println(e+"verifica Inscricao");
+           return false;
+       }
+       return false;
+   }
   
 }

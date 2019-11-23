@@ -38,7 +38,7 @@ public class Candidatos extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableTable = new javax.swing.JTable();
         jButtonINSCREVER = new javax.swing.JButton();
-        jButtonPAGAR = new javax.swing.JButton();
+        jButtonSITUACAO = new javax.swing.JButton();
         jButtonMODIFICAR = new javax.swing.JButton();
         jButtonEXCLUIR = new javax.swing.JButton();
         jButtonVOLTAR = new javax.swing.JButton();
@@ -87,10 +87,10 @@ public class Candidatos extends javax.swing.JFrame {
             }
         });
 
-        jButtonPAGAR.setText("PAGAR");
-        jButtonPAGAR.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSITUACAO.setText("SITUAÇÃO");
+        jButtonSITUACAO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPAGARActionPerformed(evt);
+                jButtonSITUACAOActionPerformed(evt);
             }
         });
 
@@ -132,7 +132,7 @@ public class Candidatos extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButtonINSCREVER, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(jButtonPAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonSITUACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
                                 .addComponent(jButtonMODIFICAR, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)
@@ -156,7 +156,7 @@ public class Candidatos extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonINSCREVER, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonPAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSITUACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonMODIFICAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(111, 111, 111))
@@ -167,11 +167,19 @@ public class Candidatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonINSCREVERActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSCREVERActionPerformed
-        // TODO add your handling code here:        
-        Inscricao inscricao = new Inscricao();
-        inscricao.recebeCpf(getLinhaTable(0));        
-        inscricao.setVisible(true);
-        this.dispose();
+        int j = jTableTable.getSelectedRow();
+        if(j!= -1){
+            if(candidatos.verificaInscricao(getLinhaTable(0))){
+                Inscricao inscricao = new Inscricao();            
+                inscricao.recebeCpf(getLinhaTable(0));        
+                inscricao.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Inscrição já realizada!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecione um candidato!");
+        }
     }//GEN-LAST:event_jButtonINSCREVERActionPerformed
 
     private void jTextFieldPESQUISACPFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPESQUISACPFKeyReleased
@@ -179,16 +187,24 @@ public class Candidatos extends javax.swing.JFrame {
        setTable(jTextFieldPESQUISACPF.getText());
     }//GEN-LAST:event_jTextFieldPESQUISACPFKeyReleased
 
-    private void jButtonPAGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPAGARActionPerformed
+    private void jButtonSITUACAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSITUACAOActionPerformed
         
-    }//GEN-LAST:event_jButtonPAGARActionPerformed
+    }//GEN-LAST:event_jButtonSITUACAOActionPerformed
 
     private void jButtonEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEXCLUIRActionPerformed
-       if(candidatos.removeCandidato(getLinhaTable(0))){
-           JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
-           setTable();
+       int j = jTableTable.getSelectedRow();
+       if(j!=-1){
+            int i =JOptionPane.showConfirmDialog(null,"Tem certeza que Deseja Excluir?","Excluir",JOptionPane.YES_NO_OPTION);
+            if(i==JOptionPane.YES_NO_OPTION){
+                if(candidatos.removeCandidato(getLinhaTable(0))){
+                    JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
+                    setTable();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Erro ao excluir!!");
+                }
+            }
        }else{
-           JOptionPane.showMessageDialog(null, "Erro ao excluir!!");
+           JOptionPane.showMessageDialog(null, "Selecione um candidato!");
        }
     }//GEN-LAST:event_jButtonEXCLUIRActionPerformed
 
@@ -199,10 +215,15 @@ public class Candidatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVOLTARActionPerformed
 
     private void jButtonMODIFICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMODIFICARActionPerformed
-        Modificar modificar = new Modificar();
-        modificar.recebeCpf(getLinhaTable(0));        
-        modificar.setVisible(true);
-        this.dispose();
+       int j = jTableTable.getSelectedRow();
+       if(j!=-1){
+            Modificar modificar = new Modificar();
+            modificar.recebeCpf(getLinhaTable(0));        
+            modificar.setVisible(true);
+            this.dispose();
+       }else{
+           JOptionPane.showMessageDialog(null, "Selecione um candidato!");
+       }
         
     }//GEN-LAST:event_jButtonMODIFICARActionPerformed
 
@@ -274,7 +295,7 @@ public class Candidatos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEXCLUIR;
     private javax.swing.JButton jButtonINSCREVER;
     private javax.swing.JButton jButtonMODIFICAR;
-    private javax.swing.JButton jButtonPAGAR;
+    private javax.swing.JButton jButtonSITUACAO;
     private javax.swing.JButton jButtonVOLTAR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

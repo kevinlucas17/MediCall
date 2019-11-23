@@ -61,7 +61,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButtonINSCREVER" min="-2" pref="112" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="jButtonPAGAR" min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="jButtonSITUACAO" min="-2" pref="112" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="jButtonMODIFICAR" min="-2" pref="112" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonINSCREVER" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="jButtonPAGAR" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
+                  <Component id="jButtonSITUACAO" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="jButtonMODIFICAR" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="jButtonEXCLUIR" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
               </Group>
@@ -142,12 +142,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonINSCREVERActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonPAGAR">
+    <Component class="javax.swing.JButton" name="jButtonSITUACAO">
       <Properties>
-        <Property name="text" type="java.lang.String" value="PAGAR"/>
+        <Property name="text" type="java.lang.String" value="SITUA&#xc7;&#xc3;O"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPAGARActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSITUACAOActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonMODIFICAR">

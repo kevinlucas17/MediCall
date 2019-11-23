@@ -12,16 +12,25 @@ package Classes;
 public class Candidato {
     private int id_inscricao;
     private long cpf;
+    private String cpf_salvo;
     private String nome,email;
     private boolean verificaPagamento;
 
     public Candidato(){
         
     }
+    public Candidato(long cpf, String nome, String email,String cpf_salvo) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
+        this.cpf_salvo = cpf_salvo;
+    }
+    
     public Candidato(long cpf, String nome, String email) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
+        
     }    
     
     public String getNome() {
@@ -62,6 +71,14 @@ public class Candidato {
 
     public void setVerificaPagamento(boolean verificaPagamento) {
         this.verificaPagamento = verificaPagamento;
+    }
+
+    public String getCpf_salvo() {
+        return cpf_salvo;
+    }
+
+    public void setCpf_salvo(String cpf_salvo) {
+        this.cpf_salvo = cpf_salvo;
     }
     
 }
