@@ -159,6 +159,7 @@ public class Qualificacao extends javax.swing.JFrame {
         if(candidato.getVerificaPagamento()){
             provaQ.setNotaQualificacao(Float.parseFloat(jTextFieldNOTAQUALI.getText()));
             provadao.insereQuali(provaQ);
+            provaQ.setTipo("Q");
             
             TblFazProvaDao fazProva = new TblFazProvaDao();
             if(fazProva.associaProva(candidato, provaQ)){

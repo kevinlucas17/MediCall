@@ -8,6 +8,7 @@ package Classes;
 public class Prova {
     private int id;
     private float notaDiscursiva, notaQualificacao;
+    private String tipo;
     public int getId() {
         return id;
     }
@@ -31,5 +32,13 @@ public class Prova {
     public void setNotaQualificacao(float notaQualificacao) {
         this.notaQualificacao = notaQualificacao;
     }    
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
     
 }

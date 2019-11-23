@@ -5,21 +5,58 @@
  */
 package Dao;
 
+import Banco.AcessoBanco;
 import Classes.Candidato;
 import Classes.Prova;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author Kevin
  */
 public class TblFazProvaDao {
+    private final AcessoBanco acessoBanco = new AcessoBanco(); 
+    private final Connection conexao = acessoBanco.conector();
+    private PreparedStatement pst;
+    private ResultSet rs;
+    
     public boolean associaProva(Candidato candidato,Prova prova){
-        return true;
+        try{
+            pst = conexao.prepareStatement("insert into tbl_faz_prova(cpf,id_prova) values (?,?)");
+            pst.setString(1,String.valueOf(candidato.getCpf()));
+            if("Q".equals(prova.getTipo())){
+            pst.setString(2, String.valueOf(prova.getNotaQualificacao()));
+            }else{
+                pst.setString(2, String.valueOf(prova.getNotaDiscursiva()));
+            }
+            pst.executeUpdate();
+            pst.close();
+            return true;
+        }catch(SQLException e){
+            System.out.println(e+" associa prova");
+            return false;
+        }
+        
     }
-    public int consultaCpf(long Cpf){
-        return 1;
+    
+    
+    public ResultSet consultaCpf(String cpf){
+       try{
+           pst = conexao.prepareStatement("select * from tbl_faz_prova where cpf =?");
+           pst.setString(1,cpf);
+           rs =pst.executeQuery();
+           return rs;
+       }catch(SQLException e){
+           System.out.println(e+" consultaCpf");
+           return null;
+       }
     }
+    /*
     public int coonsultaCpfId(long cpf, int id){
         return 1;
     }
+   */
 }

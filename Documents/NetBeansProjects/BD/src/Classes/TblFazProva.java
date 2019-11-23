@@ -10,23 +10,27 @@ package Classes;
  * @author Kevin
  */
 public class TblFazProva {
-    int id_prova;
-    private long cpf;
+    private String id_prova;
+    private String cpf;
 
-    public long getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(long Cpf) {
-        this.cpf = Cpf;
-    }
-
-    public int getId_prova() {
+    public String getId_prova() {
         return id_prova;
     }
 
-    public void setId_prova(int id_prova) {
+    public void setId_prova(String id_prova) {
         this.id_prova = id_prova;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+
+
+  
     
 }

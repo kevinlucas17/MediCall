@@ -30,53 +30,62 @@
               <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_EMAIL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel_NOME" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_CPF" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel_QUALIFICACAO" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel_EMAIL" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel_NOME" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel_CPF" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelNOME" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
+                          <Component id="jLabelCPF" min="-2" pref="194" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="jLabelQUALIFICACAO" min="-2" pref="105" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabelNOME" min="-2" pref="105" max="-2" attributes="0"/>
-                          <Component id="jLabelCPF" min="-2" pref="105" max="-2" attributes="0"/>
-                          <Component id="jLabelEMAIL" alignment="1" min="-2" pref="105" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel_IDINSCRICAO" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_SITUACAO" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelSITUACAO" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="jLabelIDINSCRICAO" min="-2" pref="81" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_DISCURSIVA" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabelDISCURSIVA" min="-2" pref="105" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabelQUALIFICACAO" min="-2" pref="105" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelEMAIL" min="-2" pref="194" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel_IDINSCRICAO" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel_SITUACAO" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelSITUACAO" min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="jLabelIDINSCRICAO" min="-2" pref="81" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel_DISCURSIVA" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jLabelDISCURSIVA" min="-2" pref="105" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="65" max="32767" attributes="0"/>
+              <EmptySpace pref="82" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,7 +95,7 @@
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel_CPF" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelCPF" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="jLabelCPF" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabel_IDINSCRICAO" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelIDINSCRICAO" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
@@ -114,11 +123,9 @@
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel_DISCURSIVA" max="32767" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="jLabel_QUALIFICACAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelQUALIFICACAO" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelQUALIFICACAO" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="jLabelDISCURSIVA" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel_QUALIFICACAO" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="86" max="32767" attributes="0"/>
               <Component id="jButtonVOLTAR" min="-2" pref="42" max="-2" attributes="0"/>
