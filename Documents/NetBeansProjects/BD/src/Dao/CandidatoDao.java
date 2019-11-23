@@ -150,5 +150,23 @@ public class CandidatoDao {
        }
        return false;
    }
-  
+  public Candidato recuperaCandidatoObject(String cpf){
+      Candidato candidato = new Candidato();
+      try{
+          pst = conexao.prepareStatement("select * from tbl_candidato where cpf =?");
+          pst.setString(1, cpf);
+          rs = pst.executeQuery();
+          while(rs.next()){              
+              candidato.setCpf(Long.parseLong(rs.getString(1)));
+              candidato.setNome(rs.getString(2));
+              candidato.setEmail(rs.getString(3));
+              return candidato;
+          }
+          
+      }catch(SQLException e){
+          System.out.println(e+" recuperaCandidatoObject");
+          return null;
+      }
+      return null;
+  }
 }

@@ -42,6 +42,7 @@ public class Candidatos extends javax.swing.JFrame {
         jButtonMODIFICAR = new javax.swing.JButton();
         jButtonEXCLUIR = new javax.swing.JButton();
         jButtonVOLTAR = new javax.swing.JButton();
+        jButtonPROVA = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,6 +116,13 @@ public class Candidatos extends javax.swing.JFrame {
             }
         });
 
+        jButtonPROVA.setText("PROVA");
+        jButtonPROVA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPROVAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +138,9 @@ public class Candidatos extends javax.swing.JFrame {
                                 .addComponent(jTextFieldPESQUISACPF, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonINSCREVER, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButtonPROVA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                    .addComponent(jButtonINSCREVER, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                                 .addGap(34, 34, 34)
                                 .addComponent(jButtonSITUACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
@@ -159,7 +169,9 @@ public class Candidatos extends javax.swing.JFrame {
                     .addComponent(jButtonSITUACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonMODIFICAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(140, 140, 140))
+                .addGap(36, 36, 36)
+                .addComponent(jButtonPROVA, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -237,6 +249,13 @@ public class Candidatos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonMODIFICARActionPerformed
 
+    private void jButtonPROVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPROVAActionPerformed
+        EscolheProva escolhe = new EscolheProva();
+        escolhe.setVisible(true);
+        escolhe.recebeCpf(getLinhaTable(0));
+        this.dispose();
+    }//GEN-LAST:event_jButtonPROVAActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -307,6 +326,7 @@ public class Candidatos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEXCLUIR;
     private javax.swing.JButton jButtonINSCREVER;
     private javax.swing.JButton jButtonMODIFICAR;
+    private javax.swing.JButton jButtonPROVA;
     private javax.swing.JButton jButtonSITUACAO;
     private javax.swing.JButton jButtonVOLTAR;
     private javax.swing.JLabel jLabel1;
