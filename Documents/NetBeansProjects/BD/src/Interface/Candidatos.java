@@ -159,7 +159,7 @@ public class Candidatos extends javax.swing.JFrame {
                     .addComponent(jButtonSITUACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonMODIFICAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111))
+                .addGap(140, 140, 140))
         );
 
         pack();
@@ -188,6 +188,16 @@ public class Candidatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPESQUISACPFKeyReleased
 
     private void jButtonSITUACAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSITUACAOActionPerformed
+       int j = jTableTable.getSelectedRow();
+       if(j!=-1){
+           CandidatoCompleto completo = new CandidatoCompleto();
+            completo.recebeCpf(getLinhaTable(0));
+            completo.setVisible(true);
+            this.dispose();
+       }else{
+           JOptionPane.showMessageDialog(null, "Selecione um candidato!");
+       }
+        
         
     }//GEN-LAST:event_jButtonSITUACAOActionPerformed
 
@@ -289,6 +299,8 @@ public class Candidatos extends javax.swing.JFrame {
             System.out.println(e+" setTable");
         }
     }
+     
+     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

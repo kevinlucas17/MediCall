@@ -38,7 +38,7 @@ public class CandidatoDao {
    
    public ResultSet recuperaCandidato(String nome){
        try{           
-           pst = conexao.prepareStatement("select * from tbl_candidato where nome like ?");
+           pst = conexao.prepareStatement("select * from tbl_candidato where nome like ? order by id_inscricao");
            pst.setString(1, nome+"%");
            rs = pst.executeQuery();
            return rs;

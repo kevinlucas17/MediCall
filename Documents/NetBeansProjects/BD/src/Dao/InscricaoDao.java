@@ -66,8 +66,24 @@ public class InscricaoDao {
             return null;
         }
     } 
-    public boolean verificaPagamento(int c){
-        return true;
+    public boolean verificaPagamento(String c){
+        try{
+            pst = conexao.prepareStatement("select verifica_pagamento from tbl_inscricao where id_inscricao =?");
+            pst.setString(1,c);
+            rs =pst.executeQuery();
+            while(rs.next()){
+                if(!"0".equals(rs.getString(1))){
+                    return true;                
+                }else{
+                    return false;        
+                }
+            }           
+    
+        }catch(SQLException e){
+            System.out.println(e+" verifica pagamento");
+            return false;
+        }
+        return false;
     }
    
 }
