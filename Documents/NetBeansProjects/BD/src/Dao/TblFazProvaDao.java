@@ -54,4 +54,20 @@ public class TblFazProvaDao {
         return 1;
     }
    */
+    public int retornaLinhas(String cpf){
+        int k = 0 ;
+        try{
+        pst = conexao.prepareStatement("select count(*) from tbl_faz_prova where cpf = ?");
+        pst.setString(1,cpf);
+        rs = pst.executeQuery();
+        while(rs.next()){
+            k = Integer.parseInt(rs.getString(1));
+        }        
+        return k;
+        }catch(SQLException e){
+            System.out.println(e+" retorna linha");
+            return -1;
+            
+        }
+    }
 }

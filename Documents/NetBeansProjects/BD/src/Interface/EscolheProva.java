@@ -8,6 +8,7 @@ package Interface;
 import Classes.Candidato;
 import Classes.Prova;
 import Dao.CandidatoDao;
+import Dao.TblFazProvaDao;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,28 +18,38 @@ import javax.swing.JOptionPane;
 public class EscolheProva extends javax.swing.JFrame {
     private String cpf;
     private CandidatoDao candidatodao = new CandidatoDao();
+    TblFazProvaDao fazProva = new TblFazProvaDao();
+    
     /**
      * Creates new form EscolheProva
      */
     public EscolheProva() {
         initComponents();
-        this.setTitle("EScolha a Prova!");
+        this.setTitle("Escolha a Prova!");
     }
 
     public void recebeCpf(String c){
         this.cpf = c;
         setButton();
+        
     }    
     
     public void setButton(){
-       
-        /* if(true){            
-            jButtonQUALIFICACAO.setVisible(false);
+        System.out.println(fazProva.retornaLinhas(cpf));
+        switch(fazProva.retornaLinhas(cpf)){
+            case 0:               
+                jButtonDISCURSIVA.setVisible(false);  
+                break;                
+            case 1:
+                 jButtonQUALIFICACAO.setVisible(false);
+                break;
+            case 2:
+                jButtonQUALIFICACAO.setVisible(false);
+                jButtonDISCURSIVA.setVisible(false);
+                break;    
             
-        }else{
-            jButtonDISCURSIVA.setVisible(false);
         }
-        */ 
+         
         
     }
     /**
@@ -53,6 +64,7 @@ public class EscolheProva extends javax.swing.JFrame {
         jButtonQUALIFICACAO = new javax.swing.JButton();
         jButtonDISCURSIVA = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButtonVOLTAR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -73,12 +85,21 @@ public class EscolheProva extends javax.swing.JFrame {
 
         jLabel1.setText("SELECIONE A PROVA");
 
+        jButtonVOLTAR.setText("VOLTAR");
+        jButtonVOLTAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVOLTARActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addContainerGap()
+                .addComponent(jButtonVOLTAR)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonQUALIFICACAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1)
@@ -88,8 +109,13 @@ public class EscolheProva extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonVOLTAR)))
                 .addGap(16, 16, 16)
                 .addComponent(jButtonQUALIFICACAO, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -102,7 +128,7 @@ public class EscolheProva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonQUALIFICACAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQUALIFICACAOActionPerformed
-        Candidato candidato = new Candidato();
+        Candidato candidato;
         candidato = candidatodao.recuperaCandidatoObject(cpf);
         Qualificacao qualificacao = new Qualificacao();
         qualificacao.recebeCandidato(candidato);
@@ -112,7 +138,7 @@ public class EscolheProva extends javax.swing.JFrame {
 
     private void jButtonDISCURSIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDISCURSIVAActionPerformed
         Prova provaQ = new Prova();
-        Candidato candidato = new Candidato();
+        Candidato candidato;
         candidato = candidatodao.recuperaCandidatoObject(cpf);
         Discursiva discursiva = new Discursiva();
         discursiva.setVisible(true);
@@ -122,6 +148,12 @@ public class EscolheProva extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonDISCURSIVAActionPerformed
+
+    private void jButtonVOLTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVOLTARActionPerformed
+        Candidatos candidatos = new Candidatos();
+        candidatos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVOLTARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,6 +193,7 @@ public class EscolheProva extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDISCURSIVA;
     private javax.swing.JButton jButtonQUALIFICACAO;
+    private javax.swing.JButton jButtonVOLTAR;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

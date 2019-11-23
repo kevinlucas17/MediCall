@@ -250,10 +250,16 @@ public class Candidatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMODIFICARActionPerformed
 
     private void jButtonPROVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPROVAActionPerformed
-        EscolheProva escolhe = new EscolheProva();
-        escolhe.setVisible(true);
-        escolhe.recebeCpf(getLinhaTable(0));
-        this.dispose();
+       
+       int j = jTableTable.getSelectedRow();
+       if(j!=-1){
+            EscolheProva escolhe = new EscolheProva();
+            escolhe.setVisible(true);
+            escolhe.recebeCpf(getLinhaTable(0));
+            this.dispose();
+       }else{
+           JOptionPane.showMessageDialog(null, "Selecione um candidato!");
+       }
     }//GEN-LAST:event_jButtonPROVAActionPerformed
 
     /**
