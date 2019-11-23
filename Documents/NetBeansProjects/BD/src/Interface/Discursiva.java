@@ -7,7 +7,9 @@ package Interface;
 
 import Classes.Candidato;
 import Classes.Prova;
+import Classes.TblFazProva;
 import Dao.ProvaDao;
+import Dao.TblFazProvaDao;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class Discursiva extends javax.swing.JFrame {
     private Candidato candidato = new Candidato();
-    private ProvaDao provadao = new ProvaDao();
+    private final ProvaDao provadao = new ProvaDao();
     private Prova prova = new Prova();
+    private final TblFazProvaDao fazProva = new TblFazProvaDao();
     
     /**
      * Creates new form Discursiva
@@ -148,15 +151,15 @@ public class Discursiva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_INSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_INSERIRActionPerformed
-        if(prova.getNotaQualificacao() < 7.0){
-            JOptionPane.showMessageDialog(null, "Candidato não Apto!");
-        }else{
             Prova provaD = new Prova();
             provaD.setNotaDiscursiva(Float.parseFloat(jTextField_INSERIRDISCURSIVA.getText()));
-            provadao.insereDisc(provaD);            
-        }
+            prova.setTipo("D");
+            provadao.insereDisc(provaD);
+            prova.setId(provadao.ultimoId());            
+            fazProva.associaProva(candidato, prova);
+        
     }//GEN-LAST:event_jButton_INSERIRActionPerformed
-
+ 
     /**
      * @param args the command line arguments
      */

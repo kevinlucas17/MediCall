@@ -160,7 +160,7 @@ public class Qualificacao extends javax.swing.JFrame {
             provaQ.setNotaQualificacao(Float.parseFloat(jTextFieldNOTAQUALI.getText()));
             provadao.insereQuali(provaQ);
             provaQ.setTipo("Q");
-            
+            provaQ.setId(provadao.ultimoId());
             TblFazProvaDao fazProva = new TblFazProvaDao();
             if(fazProva.associaProva(candidato, provaQ)){
                 JOptionPane.showMessageDialog(null, "Prova Realizada!!");

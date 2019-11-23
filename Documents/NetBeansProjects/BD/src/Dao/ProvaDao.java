@@ -87,4 +87,17 @@ public class ProvaDao {
         }     
     }
     
+    public String ultimoId(){
+        try{
+            pst = conexao.prepareStatement("select count(id_prova) from tbl_prova");
+            rs = pst.executeQuery();
+            while(rs.next()){
+                return rs.getString(1);
+            }
+        }catch(SQLException e){            
+            System.out.println(e+"ultimo id");
+            return null;
+        }
+        return null;
+    }
 }

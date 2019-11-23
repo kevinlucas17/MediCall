@@ -6,14 +6,15 @@ package Classes;
  * @author Kevin
  */
 public class Prova {
-    private int id;
+    private String id;
     private float notaDiscursiva, notaQualificacao;
     private String tipo;
-    public int getId() {
+    
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -27,11 +27,7 @@ public class TblFazProvaDao {
         try{
             pst = conexao.prepareStatement("insert into tbl_faz_prova(cpf,id_prova) values (?,?)");
             pst.setString(1,String.valueOf(candidato.getCpf()));
-            if("Q".equals(prova.getTipo())){
-            pst.setString(2, String.valueOf(prova.getNotaQualificacao()));
-            }else{
-                pst.setString(2, String.valueOf(prova.getNotaDiscursiva()));
-            }
+            pst.setString(2, prova.getId());            
             pst.executeUpdate();
             pst.close();
             return true;
@@ -40,8 +36,7 @@ public class TblFazProvaDao {
             return false;
         }
         
-    }
-    
+    }    
     
     public ResultSet consultaCpf(String cpf){
        try{
