@@ -119,7 +119,9 @@ public class CadastroCandidato extends javax.swing.JFrame {
     private void jButtonCADASTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCADASTRARActionPerformed
         if("".equals(jTextField_CPF.getText())||"".equals(jTextField_NOME.getText())||"".equals(jTextField_EMAIL.getText())){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!!");
-        }else{
+        }else if ((jTextField_CPF.getText()).length() != 11){
+            JOptionPane.showMessageDialog(null, "CPF invalido!");
+        } else {
         Candidato candidato = new Candidato(Long.parseLong(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText());
         CandidatoDao candidatodao = new CandidatoDao();        
             if(candidatodao.salvarCandidato(candidato)){
