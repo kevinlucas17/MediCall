@@ -25,17 +25,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButtonPROVAS" max="32767" attributes="0"/>
-                  <Component id="jButton1" pref="156" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton1" min="-2" pref="156" max="-2" attributes="0"/>
+                  <Component id="jButtonPROVAS" min="-2" pref="156" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButtonINSCRICOES" pref="176" max="32767" attributes="0"/>
-                  <Component id="jButtonCADASTRAR" max="32767" attributes="0"/>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButtonCADASTRAR" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
+                  <Component id="jButtonINSCRICOES" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="172" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,12 +47,12 @@
                   <Component id="jButton1" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="jButtonINSCRICOES" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonPROVAS" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                   <Component id="jButtonCADASTRAR" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="156" max="32767" attributes="0"/>
+              <EmptySpace pref="147" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
