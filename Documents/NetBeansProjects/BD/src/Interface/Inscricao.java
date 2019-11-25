@@ -158,8 +158,10 @@ public class Inscricao extends javax.swing.JFrame {
             }catch(SQLException e){
                 System.out.println(e+" Inscrever button");
             }
+            /*
             int k =Integer.parseInt(count)+ 1;
             count = String.valueOf(k);
+            */
         
         candidatodao.atribuiCandidatoInscricao(count, cpf);
         JOptionPane.showMessageDialog(null, "Candidato Inscrito!!");
