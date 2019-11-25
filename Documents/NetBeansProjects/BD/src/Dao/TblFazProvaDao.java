@@ -8,10 +8,12 @@ package Dao;
 import Banco.AcessoBanco;
 import Classes.Candidato;
 import Classes.Prova;
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -51,6 +53,22 @@ public class TblFazProvaDao {
            return null;
        }
        return null;
+    }
+    public ArrayList<String> consultaCpfList(String cpf){
+       try{
+           ArrayList<String> x = new ArrayList();
+           pst = conexao.prepareStatement("select * from tbl_faz_prova where cpf =?");
+           pst.setString(1,cpf);
+           rs =pst.executeQuery();
+           while(rs.next()){
+              x.add(rs.getString(2));
+           } 
+           return x;
+       }catch(SQLException e){
+           System.out.println(e+" consultaCpf");
+           return null;
+       }
+       
     }
     /*
     public int coonsultaCpfId(long cpf, int id){

@@ -8,8 +8,10 @@ package Interface;
 import Dao.CandidatoDao;
 import Dao.InscricaoDao;
 import Dao.ProvaDao;
+import Dao.TblFazProvaDao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +22,7 @@ public class CandidatoCompleto extends javax.swing.JFrame {
     private final CandidatoDao candidatodao = new CandidatoDao();
     private final InscricaoDao inscricaodao = new InscricaoDao();
     private final ProvaDao provadao = new ProvaDao();
+    private final TblFazProvaDao fazProva = new TblFazProvaDao();
     /**
      * Creates new form CandidatoCompleto
      */
@@ -36,7 +39,7 @@ public class CandidatoCompleto extends javax.swing.JFrame {
     
     private void setLabels(){
         ResultSet rs1 = candidatodao.recuperaCandidatoCpf(cpf);
-       
+        ArrayList<String> x = fazProva.consultaCpfList(cpf);
         try{
            while(rs1.next()){
                jLabelCPF.setText(rs1.getString(1));
@@ -50,7 +53,18 @@ public class CandidatoCompleto extends javax.swing.JFrame {
                    jLabelSITUACAO.setText("CALOTEIRO");
                }
                
-           } 
+             }
+           
+                if(x.size() == 1){                
+               
+                 jLabelQUALIFICACAO.setText(x.get(0));
+                }else if (x.isEmpty()){
+                    
+                }else{
+                    jLabelQUALIFICACAO.setText(x.get(0));
+                    jLabelDISCURSIVA.setText(x.get(1));
+                }
+             
         }catch(SQLException e){
             System.out.println(e+" set labels");
         }
