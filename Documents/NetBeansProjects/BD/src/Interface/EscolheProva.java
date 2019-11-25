@@ -141,7 +141,11 @@ public class EscolheProva extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonQUALIFICACAOActionPerformed
 
     private void jButtonDISCURSIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDISCURSIVAActionPerformed
-        Prova provaQ = new Prova();
+        
+        try{
+            
+            Prova provaQ = new Prova();
+        
         Candidato candidato;
         candidato = candidatodao.recuperaCandidatoObject(cpf);
         Discursiva discursiva = new Discursiva();
@@ -149,6 +153,9 @@ public class EscolheProva extends javax.swing.JFrame {
         discursiva.recebeCandidato(candidato);
         discursiva.recebeProvaQuali(provaQ);
         this.dispose();
+        }catch(Exception e){
+            System.out.println(e);
+        }
         
         
     }//GEN-LAST:event_jButtonDISCURSIVAActionPerformed
