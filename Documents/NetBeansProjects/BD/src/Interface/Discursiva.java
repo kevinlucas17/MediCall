@@ -182,7 +182,12 @@ public class Discursiva extends javax.swing.JFrame {
             prova.setTipo("D");
             provadao.insereDisc(provaD);
             prova.setId(provadao.ultimoId());            
-            fazProva.associaProva(candidato, prova);
+            if(fazProva.associaProva(candidato, prova)){
+                 JOptionPane.showMessageDialog(null, "Prova Realizada!!");
+            }else{
+                 JOptionPane.showMessageDialog(null, "Erro!");
+            }
+            
         
     }//GEN-LAST:event_jButton_INSERIRActionPerformed
 

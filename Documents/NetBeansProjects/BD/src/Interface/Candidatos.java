@@ -289,16 +289,20 @@ public class Candidatos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPROVAActionPerformed
 
     private void jButtonPAGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPAGARActionPerformed
-        
+       if(getLinhaTable(3) != null){
        int j = jTableTable.getSelectedRow();
-       if(j!=-1){
-            if(inscricaodao.pagar(getLinhaTable(3))){
-                JOptionPane.showMessageDialog(null, "Pagamento realizado!");
+       
+            if(j!=-1){
+                if(inscricaodao.pagar(getLinhaTable(3))){
+                    JOptionPane.showMessageDialog(null, "Pagamento realizado!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Erro no Pagamento!!");
+                }
             }else{
-                JOptionPane.showMessageDialog(null, "Erro no Pagamento!!");
-            }
-       }else{
-           JOptionPane.showMessageDialog(null, "Selecione um candidato!");
+                    JOptionPane.showMessageDialog(null, "Selecione um candidato!");
+            }    
+        }else{
+           JOptionPane.showMessageDialog(null, "Realize a Inscricão!!");
        }
     }//GEN-LAST:event_jButtonPAGARActionPerformed
 

@@ -46,7 +46,11 @@ public class EscolheProva extends javax.swing.JFrame {
             case 2:
                 jButtonQUALIFICACAO.setVisible(false);
                 jButtonDISCURSIVA.setVisible(false);
-                break;    
+                break;
+            default:
+                jButtonQUALIFICACAO.setVisible(false);
+                jButtonDISCURSIVA.setVisible(false);
+                break;
             
         }
          
