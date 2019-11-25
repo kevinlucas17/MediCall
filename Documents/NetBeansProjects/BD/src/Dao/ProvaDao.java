@@ -38,7 +38,7 @@ public class ProvaDao {
                 pst = conexao.prepareStatement("insert into tbl_prova(nota_qualificacao)values(?)");
                 pst.setString(1,String.valueOf(prova.getNotaQualificacao()));            
                 pst.executeUpdate();
-                pst.close();
+                
                 return true;
            
         }catch(SQLException e){
@@ -50,7 +50,8 @@ public class ProvaDao {
         try{
             pst = conexao.prepareStatement("select * from tbl_prova where id_prova=?");
             pst.setString(1, String.valueOf(id_prova));
-            rs =pst.executeQuery();              
+            rs =pst.executeQuery();
+            
             while(rs.next()){                 
             return rs.getString(2);
             }
@@ -66,7 +67,8 @@ public class ProvaDao {
         try{
             pst = conexao.prepareStatement("select * from tbl_prova where id_prova=?");
             pst.setString(1, String.valueOf(id_prova));
-            rs =pst.executeQuery();              
+            rs =pst.executeQuery();
+            
             while(rs.next()){                 
             return rs.getString(2);
             }
@@ -81,7 +83,8 @@ public class ProvaDao {
         try{
             pst = conexao.prepareStatement("select * from tbl_prova where id_prova=?");
             pst.setString(1, String.valueOf(id_prova));
-            rs =pst.executeQuery();              
+            rs =pst.executeQuery();
+            
             while(rs.next()){                 
             return rs.getString(3);
             }            
@@ -96,7 +99,7 @@ public class ProvaDao {
         try{
             pst = conexao.prepareStatement("select * from tbl_prova");
             rs =pst.executeQuery();          
-                   
+                
             return rs;
             
         }catch(SQLException e){
@@ -110,7 +113,7 @@ public class ProvaDao {
             pst = conexao.prepareStatement("insert into tbl_prova(nota_discursiva)values(?)");            
             pst.setString(1,String.valueOf(prova.getNotaDiscursiva()));
             pst.executeUpdate();
-            pst.close();
+            
             return true;
         }catch(SQLException e){
             System.out.println(e+"inseredisc");
@@ -123,6 +126,7 @@ public class ProvaDao {
         try{
             pst = conexao.prepareStatement("select count(id_prova) from tbl_prova");
             rs = pst.executeQuery();
+            
             while(rs.next()){
                 return rs.getString(1);
             }
@@ -136,7 +140,7 @@ public class ProvaDao {
         try{
             pst = conexao.prepareStatement("delete from tbl_prova where id_prova =?");
             pst.setString(1, id);
-            pst.executeUpdate();
+            pst.executeUpdate();           
             return true;
         }catch(SQLException e){
             System.out.println(e+"removeprova");

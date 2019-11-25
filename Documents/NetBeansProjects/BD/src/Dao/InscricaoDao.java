@@ -2,7 +2,6 @@
 package Dao;
 
 import Banco.AcessoBanco;
-import Classes.Inscricao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,8 +22,7 @@ public class InscricaoDao {
     public boolean realizaInscricao(){
         try{
             pst = conexao.prepareStatement("insert into tbl_inscricao() values()");
-              pst.execute();
-              pst.close();
+              pst.execute();              
               return true;
         }catch(SQLException e){
             System.out.println(e+" realizaoinscricao");
@@ -36,8 +34,7 @@ public class InscricaoDao {
             pst = conexao.prepareStatement("update tbl_inscricao set verifica_pagamento=? where id_inscricao=?");
             pst.setString(1, "1");
             pst.setString(2, String.valueOf(id));
-            pst.executeUpdate();
-            pst.close();
+            pst.executeUpdate();            
             return true;
         }catch(SQLException e){
             System.out.println(e+" pagar");
@@ -50,19 +47,23 @@ public class InscricaoDao {
         try{
             pst = conexao.prepareStatement("select * from tbl_inscricao");
             rs = pst.executeQuery();
+            
             return rs;
         }catch(SQLException e){
             System.out.println(e+" recuperainscricao");
+            
             return null;
         }
     }
      public ResultSet recebeUltimo(){
         try{
-            pst = conexao.prepareStatement("select count(id_inscricao) from tbl_inscricao");            
-            rs = pst.executeQuery();      
+            pst = conexao.prepareStatement("select max(id_inscricao) from tbl_inscricao");            
+            rs = pst.executeQuery();
+           
           return rs;
         }catch(SQLException e){
             System.out.println(e+" recebeultimo");
+            
             return null;
         }
     } 
@@ -71,6 +72,7 @@ public class InscricaoDao {
             pst = conexao.prepareStatement("select verifica_pagamento from tbl_inscricao where id_inscricao =?");
             pst.setString(1,c);
             rs =pst.executeQuery();
+            
             while(rs.next()){
                 if(!"0".equals(rs.getString(1))){
                     return true;                
@@ -90,8 +92,7 @@ public class InscricaoDao {
         try{
             pst = conexao.prepareStatement("delete from tbl_inscricao where id_inscricao=?");
             pst.setString(1,id);
-            pst.execute();
-            pst.close();
+            pst.execute();            
             return true;
         }catch(SQLException e){
             System.out.println(e+" remove inscricao");

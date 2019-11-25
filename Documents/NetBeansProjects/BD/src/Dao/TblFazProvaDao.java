@@ -8,7 +8,6 @@ package Dao;
 import Banco.AcessoBanco;
 import Classes.Candidato;
 import Classes.Prova;
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +30,7 @@ public class TblFazProvaDao {
             pst.setString(1,String.valueOf(candidato.getCpf()));
             pst.setString(2, prova.getId());            
             pst.executeUpdate();
-            pst.close();
+            
             return true;
         }catch(SQLException e){
             System.out.println(e+" associa prova");
@@ -45,6 +44,7 @@ public class TblFazProvaDao {
            pst = conexao.prepareStatement("select * from tbl_faz_prova where cpf =?");
            pst.setString(1,cpf);
            rs =pst.executeQuery();
+           
            while(rs.next()){
               return rs.getString(2);
            }           
@@ -60,6 +60,7 @@ public class TblFazProvaDao {
            pst = conexao.prepareStatement("select * from tbl_faz_prova where cpf =?");
            pst.setString(1,cpf);
            rs =pst.executeQuery();
+           
            
            while(rs.next()){
               x.add(rs.getString(2));
@@ -78,6 +79,7 @@ public class TblFazProvaDao {
         pst = conexao.prepareStatement("select count(*) from tbl_faz_prova where cpf = ?");
         pst.setString(1,cpf);
         rs = pst.executeQuery();
+        
         while(rs.next()){
             k = Integer.parseInt(rs.getString(1));
         }        
@@ -95,6 +97,7 @@ public class TblFazProvaDao {
             pst = conexao.prepareStatement("delete from tbl_faz_prova where cpf =?");
             pst.setString(1,cpf);
             pst.executeUpdate();
+            
             return true;
         }catch(SQLException e){
             System.out.println(e+" removefazprova");

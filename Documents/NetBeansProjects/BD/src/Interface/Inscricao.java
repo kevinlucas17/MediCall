@@ -26,6 +26,7 @@ public class Inscricao extends javax.swing.JFrame {
      */
     public Inscricao() {
         initComponents();
+        this.setTitle("Inscrição");
         
     }
      public void recebeCpf(String c){

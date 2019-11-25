@@ -28,6 +28,7 @@ public class CandidatoDao {
        pst.setString(2,String.valueOf(candidato.getNome()));
        pst.setString(3,candidato.getEmail());
        pst.executeUpdate();
+       
        return true;
        }catch(SQLException e){
            System.out.println(e+" salvarcandidato");
@@ -41,6 +42,7 @@ public class CandidatoDao {
            pst = conexao.prepareStatement("select * from tbl_candidato where nome like ? order by id_inscricao");
            pst.setString(1, nome+"%");
            rs = pst.executeQuery();
+          
            return rs;
        }catch(SQLException e){
            System.out.println(e+" recuperacandidato");
@@ -54,6 +56,7 @@ public class CandidatoDao {
        try{
            pst = conexao.prepareStatement("select * from tbl_candidato order by id_inscricao");
            rs = pst.executeQuery();
+           
            return rs;
        }catch(SQLException e){
            System.out.println(e+" recuperacandidato");
@@ -65,7 +68,7 @@ public class CandidatoDao {
        try{           
            pst = conexao.prepareStatement("select * from tbl_candidato where id_inscricao=?");
            pst.setString(1,id);
-           rs = pst.executeQuery();
+           rs = pst.executeQuery();           
            return rs;
        }catch(SQLException e){
            System.out.println(e+" recuperacandidato cpf");
@@ -78,7 +81,8 @@ public class CandidatoDao {
        try{           
            pst = conexao.prepareStatement("select * from tbl_candidato where cpf = ?");
            pst.setString(1, cpf);
-           rs = pst.executeQuery();            
+           rs = pst.executeQuery();
+           
            return rs;
        }catch(SQLException e){
            System.out.println(e+" recuperacandidato");
@@ -93,6 +97,7 @@ public class CandidatoDao {
           pst.setString(1,id);
           pst.setString(2,cpf);
           pst.executeUpdate();
+         
           return true;
        }catch(SQLException e){
            System.out.println(e+"atribuicandidato");
@@ -106,7 +111,7 @@ public class CandidatoDao {
        pst = conexao.prepareStatement("delete from tbl_candidato where cpf =?");
        pst.setString(1, cpf);
        pst.executeUpdate();
-       pst.close();
+       
        return true;
        }catch(SQLException e){
            System.out.println(e+" remover candidato");
@@ -122,7 +127,7 @@ public class CandidatoDao {
            pst.setString(3,candidato.getEmail());
            pst.setString(4, candidato.getCpf_salvo());
            pst.executeUpdate();
-           pst.close();
+           
            return true;
        }catch(SQLException e){
            System.out.println(e+" atualiza candidato");
@@ -136,6 +141,7 @@ public class CandidatoDao {
         pst = conexao.prepareStatement("select id_inscricao from tbl_candidato where cpf=?");
         pst.setString(1,cpf);
         rs = pst.executeQuery();
+       
         while(rs.next()){
             if(rs.getString(1) == null){
                 return true;
@@ -156,6 +162,7 @@ public class CandidatoDao {
           pst = conexao.prepareStatement("select * from tbl_candidato where cpf =?");
           pst.setString(1, cpf);
           rs = pst.executeQuery();
+          
           while(rs.next()){              
               candidato.setCpf(Long.parseLong(rs.getString(1)));
               candidato.setNome(rs.getString(2));
