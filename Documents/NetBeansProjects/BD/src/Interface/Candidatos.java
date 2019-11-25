@@ -7,6 +7,7 @@ package Interface;
 
 
 import Dao.CandidatoDao;
+import Dao.InscricaoDao;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
@@ -17,9 +18,11 @@ import net.proteanit.sql.DbUtils;
 public class Candidatos extends javax.swing.JFrame {
 
     CandidatoDao candidatos = new CandidatoDao();
+    InscricaoDao inscricaodao = new InscricaoDao();
     
     public Candidatos() {
         initComponents();
+        this.setTitle("Candidatos");
         setTable();
     }
     /**
@@ -43,6 +46,7 @@ public class Candidatos extends javax.swing.JFrame {
         jButtonEXCLUIR = new javax.swing.JButton();
         jButtonVOLTAR = new javax.swing.JButton();
         jButtonPROVA = new javax.swing.JButton();
+        jButtonPAGAR = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,6 +127,13 @@ public class Candidatos extends javax.swing.JFrame {
             }
         });
 
+        jButtonPAGAR.setText("PAGAR");
+        jButtonPAGAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPAGARActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,11 +153,14 @@ public class Candidatos extends javax.swing.JFrame {
                                     .addComponent(jButtonPROVA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                                     .addComponent(jButtonINSCREVER, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                                 .addGap(34, 34, 34)
-                                .addComponent(jButtonSITUACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jButtonMODIFICAR, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(jButtonEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonSITUACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jButtonMODIFICAR, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(jButtonEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButtonPAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonVOLTAR)))
@@ -170,7 +184,9 @@ public class Candidatos extends javax.swing.JFrame {
                     .addComponent(jButtonMODIFICAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEXCLUIR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(jButtonPROVA, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonPROVA, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonPAGAR, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45))
         );
 
@@ -215,14 +231,24 @@ public class Candidatos extends javax.swing.JFrame {
 
     private void jButtonEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEXCLUIRActionPerformed
        int j = jTableTable.getSelectedRow();
+        System.out.println(getLinhaTable(3));
        if(j!=-1){
             int i =JOptionPane.showConfirmDialog(null,"Tem certeza que Deseja Excluir?","Excluir",JOptionPane.YES_NO_OPTION);
             if(i==JOptionPane.YES_NO_OPTION){
-                if(candidatos.removeCandidato(getLinhaTable(0))){
-                    JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
-                    setTable();
+                if(getLinhaTable(3) ==null){
+                    if((candidatos.removeCandidato(getLinhaTable(0)))){
+                        JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
+                        setTable();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Erro ao excluir!!");
+                    }
                 }else{
-                    JOptionPane.showMessageDialog(null, "Erro ao excluir!!");
+                    if((candidatos.removeCandidato(getLinhaTable(0))) && inscricaodao.removeInscricao(getLinhaTable(3))){
+                        JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
+                        setTable();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Erro ao excluir!!");
+                    }
                 }
             }
        }else{
@@ -261,6 +287,20 @@ public class Candidatos extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, "Selecione um candidato!");
        }
     }//GEN-LAST:event_jButtonPROVAActionPerformed
+
+    private void jButtonPAGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPAGARActionPerformed
+        
+       int j = jTableTable.getSelectedRow();
+       if(j!=-1){
+            if(inscricaodao.pagar(getLinhaTable(3))){
+                JOptionPane.showMessageDialog(null, "Pagamento realizado!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Erro no Pagamento!!");
+            }
+       }else{
+           JOptionPane.showMessageDialog(null, "Selecione um candidato!");
+       }
+    }//GEN-LAST:event_jButtonPAGARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,6 +372,7 @@ public class Candidatos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEXCLUIR;
     private javax.swing.JButton jButtonINSCREVER;
     private javax.swing.JButton jButtonMODIFICAR;
+    private javax.swing.JButton jButtonPAGAR;
     private javax.swing.JButton jButtonPROVA;
     private javax.swing.JButton jButtonSITUACAO;
     private javax.swing.JButton jButtonVOLTAR;

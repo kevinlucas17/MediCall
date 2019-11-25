@@ -31,16 +31,16 @@ public class InscricaoDao {
             return false;
         }
     }    
-    public boolean pagar(Inscricao inscricao){
+    public boolean pagar(String id){
         try{
-            pst = conexao.prepareStatement("update tbl_inscricao set verifica_pagamento=? where codigo=?");
-            pst.setString(0,String.valueOf(true));
-            pst.setString(1, String.valueOf(inscricao.getCodigo()));
+            pst = conexao.prepareStatement("update tbl_inscricao set verifica_pagamento=? where id_inscricao=?");
+            pst.setString(1, "1");
+            pst.setString(2, String.valueOf(id));
             pst.executeUpdate();
             pst.close();
             return true;
         }catch(SQLException e){
-            System.out.println(e+"pagar");
+            System.out.println(e+" pagar");
             return false;
         }
     }
@@ -84,6 +84,19 @@ public class InscricaoDao {
             return false;
         }
         return false;
+    }
+    
+    public boolean removeInscricao(String id){
+        try{
+            pst = conexao.prepareStatement("delete from tbl_inscricao where id_inscricao=?");
+            pst.setString(1,id);
+            pst.execute();
+            pst.close();
+            return true;
+        }catch(SQLException e){
+            System.out.println(e+" remove inscricao");
+            return false;
+        }
     }
    
 }

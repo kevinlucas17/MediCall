@@ -20,6 +20,7 @@ public class CadastroCandidato extends javax.swing.JFrame {
      */
     public CadastroCandidato() {
         initComponents();
+        this.setTitle("Cadastrar Candidato!!");
     }
 
         //test
@@ -117,6 +118,8 @@ public class CadastroCandidato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCADASTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCADASTRARActionPerformed
+        
+        
         if("".equals(jTextField_CPF.getText())||"".equals(jTextField_NOME.getText())||"".equals(jTextField_EMAIL.getText())){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!!");
         }else{

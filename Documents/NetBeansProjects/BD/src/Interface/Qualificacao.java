@@ -28,6 +28,7 @@ public class Qualificacao extends javax.swing.JFrame {
      */
     public Qualificacao() {
         initComponents();
+        this.setTitle("Qualificação");
         setLabels();
     }
 

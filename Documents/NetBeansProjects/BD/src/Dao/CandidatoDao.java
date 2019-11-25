@@ -160,6 +160,7 @@ public class CandidatoDao {
               candidato.setCpf(Long.parseLong(rs.getString(1)));
               candidato.setNome(rs.getString(2));
               candidato.setEmail(rs.getString(3));
+              candidato.setId_inscricao(Integer.parseInt(rs.getString(4)));
               return candidato;
           }
           
