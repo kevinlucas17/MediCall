@@ -6,9 +6,13 @@
 package Interface;
 
 
+
 import Dao.CandidatoDao;
 import Dao.InscricaoDao;
+import Dao.ProvaDao;
+import Dao.TblFazProvaDao;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 /**
@@ -19,6 +23,8 @@ public class Candidatos extends javax.swing.JFrame {
 
     CandidatoDao candidatos = new CandidatoDao();
     InscricaoDao inscricaodao = new InscricaoDao();
+    TblFazProvaDao fazProva = new TblFazProvaDao();
+    ProvaDao provadao = new ProvaDao();
     
     public Candidatos() {
         initComponents();
@@ -231,7 +237,7 @@ public class Candidatos extends javax.swing.JFrame {
 
     private void jButtonEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEXCLUIRActionPerformed
        int j = jTableTable.getSelectedRow();
-        System.out.println(getLinhaTable(3));
+        
        if(j!=-1){
             int i =JOptionPane.showConfirmDialog(null,"Tem certeza que Deseja Excluir?","Excluir",JOptionPane.YES_NO_OPTION);
             if(i==JOptionPane.YES_NO_OPTION){
@@ -244,8 +250,28 @@ public class Candidatos extends javax.swing.JFrame {
                     }
                 }else{
                     if((candidatos.removeCandidato(getLinhaTable(0))) && inscricaodao.removeInscricao(getLinhaTable(3))){
-                        JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
-                        setTable();
+                        try{
+                        ArrayList<String> x = fazProva.consultaCpfList(getLinhaTable(0));
+                        fazProva.removerFazProva(getLinhaTable(0));
+                            switch (x.size()) {
+                                case 2:
+                                    provadao.removeProva(x.get(0));
+                                    provadao.removeProva(x.get(1));
+                                    JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
+                                    setTable();
+                                    break;
+                                case 1:
+                                    provadao.removeProva(x.get(0));
+                                    JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");
+                                    setTable();
+                                    break;
+                                default:
+                                    JOptionPane.showMessageDialog(null,"Excluido com sucesso!!");
+                                    break;
+                            }
+                        }catch(Exception e){
+                            System.out.println(e);
+                        }
                     }else{
                         JOptionPane.showMessageDialog(null, "Erro ao excluir!!");
                     }

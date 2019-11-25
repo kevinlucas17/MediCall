@@ -116,8 +116,7 @@ public class ProvaDao {
             System.out.println(e+"inseredisc");
             return false;
         }     
-    }   
-        
+    }    
      
     
     public String ultimoId(){
@@ -132,5 +131,16 @@ public class ProvaDao {
             return null;
         }
         return null;
+    }
+    public boolean removeProva(String id){
+        try{
+            pst = conexao.prepareStatement("delete from tbl_prova where id_prova =?");
+            pst.setString(1, id);
+            pst.executeUpdate();
+            return true;
+        }catch(SQLException e){
+            System.out.println(e+"removeprova");
+            return false;
+        }
     }
 }

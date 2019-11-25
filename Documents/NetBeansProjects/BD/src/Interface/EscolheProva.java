@@ -36,6 +36,7 @@ public class EscolheProva extends javax.swing.JFrame {
     
     public void setButton(){
         System.out.println(fazProva.retornaLinhas(cpf));
+        
         switch(fazProva.retornaLinhas(cpf)){
             case 0:               
                 jButtonDISCURSIVA.setVisible(false);  
@@ -46,10 +47,18 @@ public class EscolheProva extends javax.swing.JFrame {
             case 2:
                 jButtonQUALIFICACAO.setVisible(false);
                 jButtonDISCURSIVA.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Provas já realizadas");
+                Candidatos candidato = new Candidatos();                
+                candidato.setVisible(true);
+                this.dispose();
                 break;
             default:
                 jButtonQUALIFICACAO.setVisible(false);
                 jButtonDISCURSIVA.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Excluído com sucesso!!");                
+                Candidatos candidatos= new Candidatos();
+                candidatos.setVisible(true);
+                this.dispose();
                 break;
             
         }

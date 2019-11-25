@@ -89,9 +89,19 @@ public class TblFazProvaDao {
         }
     }
     
-    /*
+    
     public boolean removerFazProva(String cpf){
+        try{
+            pst = conexao.prepareStatement("delete from tbl_faz_prova where cpf =?");
+            pst.setString(1,cpf);
+            pst.executeUpdate();
+            return true;
+        }catch(SQLException e){
+            System.out.println(e+" removefazprova");
+            return false;
+        }
+                        
         
     }
-    */
+    
 }
