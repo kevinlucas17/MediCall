@@ -46,14 +46,28 @@ public class ProvaDao {
             return false;
         }     
     }
-    public String recuperaProva(String id_prova){
+    public String recuperaProvaQuali(String id_prova){        
         try{
             pst = conexao.prepareStatement("select * from tbl_prova where id_prova=?");
             pst.setString(1, String.valueOf(id_prova));
             rs =pst.executeQuery();              
-            while(rs.next()){  
-                
+            while(rs.next()){                 
             return rs.getString(2);
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e+" recuperaprova");
+            return null;
+        }
+        return null;
+    }
+    public String recuperaProvaDisc(String id_prova){        
+        try{
+            pst = conexao.prepareStatement("select * from tbl_prova where id_prova=?");
+            pst.setString(1, String.valueOf(id_prova));
+            rs =pst.executeQuery();              
+            while(rs.next()){                 
+            return rs.getString(3);
             }
             
         }catch(SQLException e){

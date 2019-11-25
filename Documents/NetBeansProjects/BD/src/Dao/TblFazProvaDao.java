@@ -60,9 +60,10 @@ public class TblFazProvaDao {
            pst = conexao.prepareStatement("select * from tbl_faz_prova where cpf =?");
            pst.setString(1,cpf);
            rs =pst.executeQuery();
+           
            while(rs.next()){
               x.add(rs.getString(2));
-           } 
+           }          
            return x;
        }catch(SQLException e){
            System.out.println(e+" consultaCpf");
@@ -70,11 +71,7 @@ public class TblFazProvaDao {
        }
        
     }
-    /*
-    public int coonsultaCpfId(long cpf, int id){
-        return 1;
-    }
-   */
+    
     public int retornaLinhas(String cpf){
         int k = 0 ;
         try{
@@ -91,4 +88,10 @@ public class TblFazProvaDao {
             
         }
     }
+    
+    /*
+    public boolean removerFazProva(String cpf){
+        
+    }
+    */
 }

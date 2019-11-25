@@ -6,6 +6,7 @@
 package Interface;
 
 import Classes.Candidato;
+import Classes.ValidacaoEntradas;
 import Dao.CandidatoDao;
 import javax.swing.JOptionPane;
 
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Kevin
  */
 public class CadastroCandidato extends javax.swing.JFrame {
-
+    private ValidacaoEntradas validacao = new ValidacaoEntradas();
     /**
      * Creates new form CadastroCandidato
      */
@@ -22,7 +23,6 @@ public class CadastroCandidato extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Cadastrar Candidato!!");
     }
-
         //test
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,20 +119,28 @@ public class CadastroCandidato extends javax.swing.JFrame {
 
     private void jButtonCADASTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCADASTRARActionPerformed
         
+        if(validacao.validaNome(jTextField_NOME.getText())){
         
-        if("".equals(jTextField_CPF.getText())||"".equals(jTextField_NOME.getText())||"".equals(jTextField_EMAIL.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!!");
-        }else if ((jTextField_CPF.getText()).length() != 11){
-            JOptionPane.showMessageDialog(null, "CPF invalido!");
-        } else {
-        Candidato candidato = new Candidato(Long.parseLong(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText());
-        CandidatoDao candidatodao = new CandidatoDao();        
-            if(candidatodao.salvarCandidato(candidato)){
-                JOptionPane.showMessageDialog(null, "Cadastro Realizado");
+            if("".equals(jTextField_CPF.getText())||"".equals(jTextField_NOME.getText())||"".equals(jTextField_EMAIL.getText())){
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos!!");
+            }else if ((jTextField_CPF.getText()).length() != 11){
+                JOptionPane.showMessageDialog(null, "CPF invalido!");
+       
+            
             }else{
+            Candidato candidato = new Candidato(Long.parseLong(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText());
+            CandidatoDao candidatodao = new CandidatoDao();        
+                if(candidatodao.salvarCandidato(candidato)){
+                    JOptionPane.showMessageDialog(null, "Cadastro Realizado");
+                }else{
                 JOptionPane.showMessageDialog(null, "Erro no Cadastro");
+                }
+            
             }
-        }     
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro nome: Digite Somente Letras!!");
+        }
+        
                 
     }//GEN-LAST:event_jButtonCADASTRARActionPerformed
 

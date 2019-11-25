@@ -12,7 +12,7 @@ package Classes;
 public class ValidacaoEntradas {
     
     public boolean validaNome(String nome){
-        return nome.matches("^(([A-Z]{2,30})\\s*){2,10}");
+        return nome.matches("^(([a-z]{2,30})\\s*){2,10}");
     }
     public boolean validaRG(String rg){
         return rg.matches("(([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2}))");
@@ -27,5 +27,6 @@ public class ValidacaoEntradas {
     public boolean validaDataNascimento(String data){
         return data.matches("\\d{2}/\\d{2}/\\d{2,4}");
     }
+    
     
 }

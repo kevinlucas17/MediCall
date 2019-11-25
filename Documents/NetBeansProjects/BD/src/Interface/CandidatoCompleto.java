@@ -55,15 +55,17 @@ public class CandidatoCompleto extends javax.swing.JFrame {
                
              }
            
-                if(x.size() == 1){                
+            if(x.size() == 1){                
                
-                 jLabelQUALIFICACAO.setText(x.get(0));
-                }else if (x.isEmpty()){
+                 jLabelQUALIFICACAO.setText(provadao.recuperaProvaQuali(x.get(0)));
+                 
+            }else if (x.isEmpty()){
                     
-                }else{
-                    jLabelQUALIFICACAO.setText(x.get(0));
-                    jLabelDISCURSIVA.setText(x.get(1));
-                }
+            }else{
+                    jLabelQUALIFICACAO.setText(provadao.recuperaProvaQuali(x.get(0)));
+                    jLabelDISCURSIVA.setText(provadao.recuperaProvaDisc(x.get(1)));
+                    System.out.println(x.get(1)+"prova discr");
+            }
              
         }catch(SQLException e){
             System.out.println(e+" set labels");
