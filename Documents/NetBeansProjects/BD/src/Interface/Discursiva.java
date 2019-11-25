@@ -26,6 +26,7 @@ public class Discursiva extends javax.swing.JFrame {
      */
     public Discursiva() {
         initComponents();
+        this.setTitle("Discursiva");
         setLables();
     }
 
@@ -226,12 +227,13 @@ public class Discursiva extends javax.swing.JFrame {
         });
     }
     public void recebeCandidato(Candidato candidatos){
-        this.candidato = candidatos;
+        this.candidato = candidatos;        
         
     }
     public void recebeProvaQuali(Prova provaQ){
         this.prova = provaQ;
         setLables();
+        verificaNota();
     }
     private void setLables(){
         jLabel_NOME.setText(candidato.getNome());
@@ -239,7 +241,22 @@ public class Discursiva extends javax.swing.JFrame {
         jLabel_CPF.setText(String.valueOf(candidato.getCpf()));
         jLabel_idInscricao.setText(String.valueOf(candidato.getId_inscricao()));
         jLabel_RECEBENOTAQUALIFICACAO.setText(String.valueOf(prova.getNotaDiscursiva()));
+        jLabel_RECEBENOTAQUALIFICACAO.setText(provadao.recuperaProva(fazProva.consultaCpf(String.valueOf(candidato.getCpf()))));
+
         
+    }
+    
+    private void verificaNota(){
+        try{
+        float x =Float.parseFloat(provadao.recuperaProva(fazProva.consultaCpf(String.valueOf(candidato.getCpf()))));
+            System.out.println(x);
+        if(x< 70.0){
+            JOptionPane.showMessageDialog(null, "Candidato não Apto!!");
+            jButton_INSERIR.setVisible(false);
+        }
+        }catch(Exception e){
+            System.out.println(e + "   verifica nota");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

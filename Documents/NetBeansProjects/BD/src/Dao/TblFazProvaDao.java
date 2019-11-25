@@ -38,16 +38,19 @@ public class TblFazProvaDao {
         
     }    
     
-    public ResultSet consultaCpf(String cpf){
+    public String consultaCpf(String cpf){
        try{
            pst = conexao.prepareStatement("select * from tbl_faz_prova where cpf =?");
            pst.setString(1,cpf);
            rs =pst.executeQuery();
-           return rs;
+           while(rs.next()){
+              return rs.getString(2);
+           }           
        }catch(SQLException e){
            System.out.println(e+" consultaCpf");
            return null;
        }
+       return null;
     }
     /*
     public int coonsultaCpfId(long cpf, int id){

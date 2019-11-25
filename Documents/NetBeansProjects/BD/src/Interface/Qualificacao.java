@@ -173,7 +173,7 @@ public class Qualificacao extends javax.swing.JFrame {
     private void jButtonINSERIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonINSERIRActionPerformed
         
         //faltando associar a nota ao cpf do candidato atraves da tabela tbl_faz_prova
-        if(candidato.getVerificaPagamento()){
+        if(inscricaodao.verificaPagamento(String.valueOf(candidato.getId_inscricao()))){
             provaQ.setNotaQualificacao(Float.parseFloat(jTextFieldNOTAQUALI.getText()));
             provadao.insereQuali(provaQ);
             provaQ.setTipo("Q");
@@ -239,7 +239,7 @@ public class Qualificacao extends javax.swing.JFrame {
         jLabelCPF.setText(String.valueOf(candidato.getCpf()));
         jLabelEMAIL.setText(candidato.getEmail());
         jLabel_RECEBEINSCRICAOID.setText(String.valueOf(candidato.getId_inscricao()));
-        jLabelPAGO.setText(String.valueOf(candidato.getVerificaPagamento()));
+        jLabelPAGO.setText(String.valueOf(inscricaodao.verificaPagamento(String.valueOf(candidato.getId_inscricao()))));
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
