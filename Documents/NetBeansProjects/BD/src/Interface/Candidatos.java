@@ -393,10 +393,8 @@ public class Candidatos extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println(e+" setTable");
         }
-    }
-     
-     
-    
+    }  
+         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEXCLUIR;

@@ -6,6 +6,7 @@
 package Interface;
 
 import Classes.Candidato;
+import Classes.ValidacaoEntradas;
 import Dao.CandidatoDao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 public class Modificar extends javax.swing.JFrame {
     private CandidatoDao candidatodao = new CandidatoDao();
     private String cpf;
+    ValidacaoEntradas validacao = new ValidacaoEntradas();
     /**
      * Creates new form Modificar
      */
@@ -158,18 +160,21 @@ public class Modificar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonVOLTARActionPerformed
 
     private void jButtonATUALIZARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonATUALIZARActionPerformed
-        if("".equals(jTextField_CPF.getText()) ||  "".equals(jTextField_NOME.getText()) || "".equals(jTextField_EMAIL.getText())){
-            JOptionPane.showMessageDialog(null, "Preencha todos campos!!");
-        }else{
+        if(validacao.validaNome(jTextField_NOME.getText())){
+            if("".equals(jTextField_CPF.getText()) ||  "".equals(jTextField_NOME.getText()) || "".equals(jTextField_EMAIL.getText())){
+                JOptionPane.showMessageDialog(null, "Preencha todos campos!!");
+            }else{
                 
-                if(candidatodao.atualizaCandidato(new Candidato(Long.parseLong(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText(),cpf))){
-                    JOptionPane.showMessageDialog(null, "Atualizado");
-                    setCampos();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Não Atualizado!");
-                }
-        }        
-        
+                    if(candidatodao.atualizaCandidato(new Candidato(Long.parseLong(jTextField_CPF.getText()),jTextField_NOME.getText(),jTextField_EMAIL.getText(),cpf))){
+                        JOptionPane.showMessageDialog(null, "Atualizado");
+                        setCampos();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Não Atualizado!");
+                    }
+            }      
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro nome: digite apenas letras!!!");
+        }          
     }//GEN-LAST:event_jButtonATUALIZARActionPerformed
 
     /**
